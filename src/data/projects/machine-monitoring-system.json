@@ -25,7 +25,9 @@
     "Responsive design for different screen sizes"
   ],
   "gallery": [],
-  "videos": ["/projects/machine-monitoring-system-demo.mp4"],
+  "videos": [
+    "https://github.com/user-attachments/assets/412d89eb-08e0-43f9-8701-ebe74e25bd76"
+  ],
   "github": "https://github.com/samadyfahim/Machine-Monitoring-System",
   "projectLink": ""
 }

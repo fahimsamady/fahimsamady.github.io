@@ -18,14 +18,14 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
   if (!project) {
     return (
-      <main className="min-h-screen px-60 bg-white">
+      <main className="main">
         <ProjectNotFound />
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen pb-24 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-60 bg-white">
+    <main className="main">
       <BackButton />
 
       <ProjectHeader project={project} />

@@ -7,7 +7,7 @@ interface ProjectContentProps {
 
 export default function ProjectContent({ project }: ProjectContentProps) {
   return (
-    <div className="space-y-8 sm:space-y-12">
+    <div className="space-y-8 sm:space-y-12 mb-24">
       {/* Description */}
       <section>
         <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">

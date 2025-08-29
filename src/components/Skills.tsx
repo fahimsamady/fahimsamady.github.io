@@ -3,18 +3,13 @@
 import { useState } from "react";
 import { getSkills } from "@/lib/data";
 import type { Skills } from "@/types";
-import {
-  LucideIcon,
-  FileCode,
-  Laptop, // for Software tab
-  Cog, // for Expertise tab
-  Languages, // for Language tab
-} from "lucide-react";
+import { LucideIcon } from "lucide-react";
+import { icons } from "@/lib/icons";
 
 const tabList = [
-  { key: "software", label: "Software", icon: Laptop },
-  { key: "expertise", label: "Expertise", icon: Cog },
-  { key: "language", label: "Language", icon: Languages },
+  { key: "software", label: "Software", icon: icons.Laptop },
+  { key: "expertise", label: "Expertise", icon: icons.Cog },
+  { key: "language", label: "Language", icon: icons.Languages },
 ] as const;
 
 export default function Skills() {
@@ -44,21 +39,8 @@ export default function Skills() {
       {/* Skills grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {skills[activeTab].map((skill) => {
-          // Use FileCode as default icon
-          let Icon: LucideIcon = FileCode;
-
-          // Map common icon names to actual icon components
-          const iconMap: Record<string, LucideIcon> = {
-            FileCode,
-            Laptop,
-            Cog,
-            Languages,
-            // Add more icons as needed
-          };
-
-          if (skill.icon && iconMap[skill.icon]) {
-            Icon = iconMap[skill.icon];
-          }
+          const Icon =
+            icons[skill.icon as keyof typeof icons] || icons.FileCode;
 
           return (
             <div key={skill.name} className="skill-tag flex items-center gap-2">

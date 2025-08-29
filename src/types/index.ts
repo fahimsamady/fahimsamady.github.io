@@ -59,8 +59,8 @@ export interface Project {
   keyFeatures: string[];
   challenges: string[];
   keyLearnings: string[];
-  gallery: string[];
-  videos?: string[];
+  gallery: string[]; // Array of image URLs
+  videos?: string[]; // Array of video URLs (YouTube, Vimeo, etc.)
   github?: string;
   projectLink?: string;
 }

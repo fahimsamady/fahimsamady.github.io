@@ -33,15 +33,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
       ) : project.videos && project.videos.length > 0 ? (
-        <div className="relative h-48 overflow-hidden">
-          <video
+        <div className="relative h-48 overflow-hidden bg-gray-900">
+          <iframe
             src={project.videos[0]}
-            className="w-full h-full object-cover"
-            muted
-            loop
-            autoPlay
+            className="absolute inset-0 w-full h-full"
+            title={`${project.title} - Video Preview`}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
           />
-          <div className="absolute inset-0 bg-black bg-opacity-20" />
           <div className="absolute top-3 right-3">
             <span
               className={`px-2 py-1 rounded-full text-xs font-medium ${typeColor}`}
@@ -49,11 +49,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               <TypeIcon size={12} className="inline mr-1" />
               {project.type.toUpperCase()}
             </span>
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 bg-white bg-opacity-80 rounded-full flex items-center justify-center">
-              <Play size={24} className="text-gray-800" />
-            </div>
           </div>
         </div>
       ) : (

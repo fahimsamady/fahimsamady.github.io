@@ -9,7 +9,7 @@ const Hero = () => {
 
   return (
     <section className="section-padding">
-      <div className="grid lg:grid-cols-2 gap-20 items-center">
+      <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 md:gap-20 items-center">
         {/* Left Side */}
         <div className="space-y-6">
           <h1 className="text-4xl lg:text-4xl font-bold text-gray-900 leading-tight">
@@ -78,7 +78,7 @@ const Hero = () => {
 
         {/* Right Side - Profile Image */}
         <div className="flex justify-center lg:justify-end">
-          <div className="w-80 h-80 rounded-2xl overflow-hidden">
+          <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden">
             <Image
               src={profile.profilePicture}
               alt={profile.name}

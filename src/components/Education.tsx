@@ -14,7 +14,11 @@ export default function EducationSection() {
       <div className="relative space-y-6">
         {/* vertical timeline spine */}
         <div
-          className="absolute left-4 top-0 bottom-0 w-px bg-primary"
+          className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary to-primary"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(to bottom, var(--primary) 0, var(--primary) 8px, transparent 8px, transparent 16px)",
+          }}
           aria-hidden
         />
 

@@ -21,8 +21,12 @@
 }
 
 @layer components {
+  .main {
+    @apply min-h-screen px-4 sm:px-8 md:px-16 lg:px-56 xl:px-60 bg-white;
+  }
+
   .section-padding {
-    @apply py-16;
+    @apply py-6 md:py-10 lg:py-24;
   }
 
   .btn {

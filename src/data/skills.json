@@ -34,7 +34,7 @@
   ],
   "expertise": [
     { "name": "Machine Learning", "icon": "Cpu" },
-    { "name": "Embedded Systems", "icon": "Chip" },
+    { "name": "Embedded Systems", "icon": "Cpu" },
     { "name": "Unity", "icon": "Gamepad2" },
     { "name": "Git", "icon": "GitBranch" },
     { "name": "Microservices", "icon": "Network" },
