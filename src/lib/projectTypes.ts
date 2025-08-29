@@ -1,6 +1,7 @@
 import { Globe, Smartphone, Zap, Cpu } from "lucide-react";
 
 export const projectTypes = [
+  // SAFELIST THESE COLORS IN TAIWILND CONFIG
   { key: "all", label: "All", icon: Globe, color: "bg-gray-100 text-gray-800" },
   { key: "web", label: "Web", icon: Globe, color: "bg-blue-100 text-blue-800" },
   {

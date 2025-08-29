@@ -1,7 +1,7 @@
 {
   "id": "sensor-constructor",
   "title": "Sensor Constructor",
-  "shortDescription": "Sensor Constructor is a windows forms application that allows users to construct sensors and view their data.",
+  "shortDescription": "Sensor Constructor is a multiplatform QT6 application that allows users to construct sensors and view their data.",
   "type": "desktop",
   "order": 3,
   "duration": "2 hours",

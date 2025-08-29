@@ -11,19 +11,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
 
   return (
     <section className="mb-8 sm:mb-12">
-      <div className="flex items-center gap-2 sm:gap-3 mb-3">
-        <span
-          className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${getTypeColor(
-            project.type
-          )}`}
-        >
-          <TypeIcon size={12} className="sm:w-3.5 sm:h-3.5 inline mr-1" />
-          <span className="hidden sm:inline">{project.type.toUpperCase()}</span>
-          <span className="sm:hidden">
-            {project.type.toUpperCase().slice(0, 3)}
-          </span>
-        </span>
-      </div>
+      <div className="flex items-center gap-2 sm:gap-3 mb-3"></div>
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
         {project.title}
       </h1>

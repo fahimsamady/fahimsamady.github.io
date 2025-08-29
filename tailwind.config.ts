@@ -6,6 +6,19 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    // Project type colors - ensure these are always included
+    "bg-blue-100",
+    "text-blue-800",
+    "bg-green-100",
+    "text-green-800",
+    "bg-purple-100",
+    "text-purple-800",
+    "bg-orange-100",
+    "text-orange-800",
+    "bg-gray-100",
+    "text-gray-800",
+  ],
   theme: {
     extend: {
       colors: {

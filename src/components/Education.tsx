@@ -40,13 +40,13 @@ export default function EducationSection() {
                     {edu.degree}
                   </h3>
 
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
+                  <div className="flex items-center gap-2 text-sm text-gray-700">
                     <Calendar size={12} />
                     <span>{edu.period}</span>
                   </div>
                 </div>
 
-                <p className="text-xs text-gray-600 flex items-center gap-2">
+                <p className="text-sm text-gray-700 flex items-center gap-2">
                   <MapPin size={12} className="text-gray-400" />
                   <span>
                     {edu.institution}, {edu.location}
