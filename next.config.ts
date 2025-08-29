@@ -1,12 +1,12 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: "export",
-  trailingSlash: true,
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "export", // <-- enables static HTML export
   images: {
-    unoptimized: true,
+    unoptimized: true, // GH Pages doesn't support Next/Image optimization
   },
-  basePath: process.env.NODE_ENV === "production" ? "/fahim-portfolio" : "",
+  basePath: "/me", // replace with your repo name
+  assetPrefix: "/me/",
 };
 
-export default nextConfig;
+module.exports = nextConfig;
