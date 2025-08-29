@@ -1,0 +1,37 @@
+{
+  "id": "foodgram",
+  "title": "Foodgram",
+  "shortDescription": "Android Restaurant review app",
+  "type": "mobile",
+  "order": 3,
+  "duration": "15 days",
+  "longDescription": "App for finding best places to eat in you area. Restaurant review app with features like adding, editing, deleting, and viewing restaurants and their reviews. Users can also add and view their own reviews. The app is built with Kotlin and uses Firebase for authentication and database.",
+  "technologies": ["Kotlin", "Android Studio", "Firebase", "Google Places API"],
+  "keyFeatures": [
+    "Authentication and authorization",
+    "Reviewing restaurants on Google Places",
+    "Rating, sorting, finding restaurants",
+    "Commenting, liking, reviewing"
+  ],
+  "challenges": [
+    "First time working with Android Studio",
+    "This was a university group project"
+  ],
+  "keyLearnings": [
+    "Learned Kotlin",
+    "Mobile development principles",
+    "Teamwork"
+  ],
+  "gallery": [
+    "https://github.com/mousiyah/Foodgram/assets/40555448/affd8e16-4dcd-452f-8475-f3d5f91c65dd",
+    "https://github.com/mousiyah/Foodgram/assets/40555448/b6daee7e-8e4a-49f6-ba8c-4bca50040c7d",
+    "https://github.com/mousiyah/Foodgram/assets/40555448/b89a10e9-2b68-45bc-be0e-f19bbcfd956b",
+    "https://github.com/mousiyah/Foodgram/assets/40555448/8962a546-ffe5-479c-80da-110d2e804417",
+    "https://github.com/mousiyah/Foodgram/assets/40555448/41d992ce-9cce-4d3b-b95c-affa656005c4",
+    "https://github.com/mousiyah/Foodgram/assets/40555448/7c46d9c6-e0c5-469b-8629-9f048c29d1bc",
+    "https://github.com/mousiyah/Foodgram/assets/40555448/e372fb67-da81-4e3d-a52c-a3492193249e"
+  ],
+  "videos": [],
+  "github": "",
+  "projectLink": ""
+}

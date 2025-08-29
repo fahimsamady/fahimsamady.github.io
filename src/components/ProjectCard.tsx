@@ -20,13 +20,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 h-full flex flex-col">
       {/* Project Image/Video */}
       {project.gallery && project.gallery.length > 0 ? (
-        <div className="relative overflow-hidden">
+        <div className="relative h-48 overflow-hidden">
           <Image
             src={project.gallery[0]}
             alt={project.title}
-            width={400}
-            height={300}
-            className="w-full h-auto object-contain"
+            fill
+            className="object-cover"
           />
           <div className="absolute top-3 right-3">
             <span
@@ -36,12 +35,19 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {project.type.toUpperCase()}
             </span>
           </div>
+          <button
+            onClick={() => setIsFullscreen(true)}
+            className="absolute top-3 left-3 p-2 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-lg transition-all"
+            title="View Fullscreen"
+          >
+            <Maximize2 size={16} className="text-white" />
+          </button>
         </div>
       ) : project.videos && project.videos.length > 0 ? (
-        <div className="relative overflow-hidden bg-gray-900">
+        <div className="relative h-48 overflow-hidden bg-gray-900">
           <iframe
             src={project.videos[0]}
-            className="w-full aspect-video"
+            className="absolute inset-0 w-full h-full"
             title={`${project.title} - Video Preview`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -55,6 +61,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {project.type.toUpperCase()}
             </span>
           </div>
+          <button
+            onClick={() => setIsFullscreen(true)}
+            className="absolute top-3 left-3 p-2 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-lg transition-all"
+            title="View Fullscreen"
+          >
+            <Maximize2 size={16} className="text-white" />
+          </button>
         </div>
       ) : (
         <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
@@ -131,6 +144,42 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           )}
         </div>
       </div>
+
+      {/* Fullscreen Modal */}
+      {isFullscreen && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4">
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* Close Button */}
+            <button
+              onClick={() => setIsFullscreen(false)}
+              className="absolute top-4 right-4 z-10 p-3 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full transition-all"
+              title="Close Fullscreen"
+            >
+              <X size={24} className="text-white" />
+            </button>
+
+            {/* Fullscreen Content */}
+            {project.gallery && project.gallery.length > 0 ? (
+              <Image
+                src={project.gallery[0]}
+                alt={project.title}
+                width={1200}
+                height={900}
+                className="max-w-full max-h-[90vh] object-contain"
+              />
+            ) : project.videos && project.videos.length > 0 ? (
+              <iframe
+                src={project.videos[0]}
+                className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
+                title={`${project.title} - Video Preview`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : null}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

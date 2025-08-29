@@ -1,0 +1,21 @@
+{
+  "id": "3d-spheres-algorithm",
+  "title": "3D Spheres Algorithm",
+  "shortDescription": "I have implemented an algorithm for drawing 3D spheres using geometry, trigonometry and mathematics in Java.",
+  "type": "other",
+  "order": 6,
+  "duration": "2 hours",
+  "longDescription": "You can change the radius, color, number of spheres and move them in XYZ plane. Every pixel of sphere is calculated using alorithm. This was my university project.",
+  "technologies": ["Java"],
+  "keyFeatures": [],
+  "challenges": [
+    "Figuring out the correct algorithms to draw 3D elements on XYZ plane."
+  ],
+  "keyLearnings": ["Crtitical thinking", "Graphic Programming"],
+  "gallery": [
+    "https://github.com/user-attachments/assets/834e712c-39de-491b-b1fa-443206278830"
+  ],
+  "videos": [],
+  "github": "https://github.com/samadyfahim/lkmetrology_sensor_constructor",
+  "projectLink": ""
+}
