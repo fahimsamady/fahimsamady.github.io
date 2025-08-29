@@ -1,61 +1,28 @@
 {
   "id": "sensor-constructor",
   "title": "Sensor Constructor",
-  "shortDescription": "Sensor Constructor is a multiplatform QT6 application that allows users to construct sensors and view their data.",
+  "shortDescription": "Sensor Constructor is a multiplatform QT6 C++ application that allows users to construct sensors and view their data.",
   "type": "desktop",
   "order": 3,
   "duration": "2 hours",
-  "longDescription": "",
-  "technologies": [
-    "OpenAI GPT-4",
-    "TensorFlow",
-    "NLTK",
-    "SpaCy",
-    "React",
-    "TypeScript",
-    "Tailwind CSS",
-    "Python",
-    "FastAPI",
-    "Redis",
-    "PostgreSQL",
-    "Docker",
-    "AWS",
-    "Kubernetes",
-    "Pytest",
-    "Selenium",
-    "Prometheus",
-    "Grafana",
-    "ELK Stack"
-  ],
+  "longDescription": "Sensor Constructor works on MAC, Windows and Linux. It is a multiplatform application that allows users to visually construct sensors and view their data. We can also calculate the sensor length and CTE.",
+  "technologies": ["C++", "QT6", "CSS"],
   "keyFeatures": [
-    "Natural language understanding and processing",
-    "Multi-language support",
-    "Integration with CRM systems",
-    "Sentiment analysis and emotion detection",
-    "Automatic ticket creation and escalation",
-    "Learning from customer interactions",
-    "Analytics and reporting dashboard",
-    "Voice-to-text and text-to-voice capabilities"
+    "Visual sensor construction",
+    "Sensor data visualization",
+    "Sensor length and CTE calculation",
+    "Multiplatform support",
+    "User-friendly interface",
+    "Customizable sensor templates"
   ],
   "challenges": [
-    "Training the model with domain-specific data",
-    "Handling ambiguous customer queries",
-    "Ensuring consistent response quality",
-    "Integrating with existing business systems",
-    "Managing conversation context and flow"
+    "QT6 is a new framework and there are not many resources available for it."
   ],
-  "keyLearnings": [
-    "Natural language processing techniques",
-    "AI model fine-tuning and optimization",
-    "Conversation design principles",
-    "System integration best practices",
-    "AI ethics and bias mitigation"
+  "keyLearnings": ["Working with QT6 and C++"],
+  "gallery": [],
+  "videos": [
+    "https://github.com/user-attachments/assets/0ac6783a-715d-4bf0-b40c-15beea790619"
   ],
-  "gallery": [
-    "/projects/ai-chatbot/gallery-1.jpg",
-    "/projects/ai-chatbot/gallery-2.jpg",
-    "/projects/ai-chatbot/gallery-3.jpg"
-  ],
-  "github": "https://github.com/username/ai-chatbot",
+  "github": "https://github.com/samadyfahim/lkmetrology_sensor_constructor",
   "projectLink": ""
 }

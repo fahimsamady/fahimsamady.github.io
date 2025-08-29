@@ -1,0 +1,48 @@
+{
+  "id": "gp-appointment-booking-system",
+  "title": "GP Appointment Booking System",
+  "shortDescription": "A web application for booking appointments with a GP.",
+  "type": "web",
+  "order": 1,
+  "duration": "1 month",
+  "longDescription": "This is a secure system for booking appointments with GP. Patients can arrange, view, edit, cancel, appointments with their local GPs. Appointments are scheduled by the system and the GP, administors can interact with the system to access and manage the schedule.",
+  "technologies": [
+    "PERN stack",
+    "Node.js",
+    "Express",
+    "React.js",
+    "PostgreSQL",
+    "Tailwind CSS",
+    "JWT",
+    "bcrypt",
+    "TypeScript",
+    "Docker"
+  ],
+  "keyFeatures": [
+    "Secure system for booking appointments with GP",
+    "Patients can arrange, view, edit, cancel, appointments with their local GPs",
+    "Appointments are scheduled by the system and the GP",
+    "Administors can interact with the system to access and manage the schedule"
+  ],
+  "challenges": [
+    "My first independent large scale project",
+    "This was my first time working with PERN stack.",
+    "I have learned on the way everything myself"
+  ],
+  "keyLearnings": [
+    "Working with documentations",
+    "Learning independently",
+    "Clean coding",
+    "Full stack development"
+  ],
+  "gallery": [
+    "https://github.com/user-attachments/assets/4c92d143-e0c4-4543-bfe0-581d69bd96cb",
+    "https://github.com/user-attachments/assets/5b533bf8-597a-4a4b-928c-d0297c2d4ffe",
+    "https://github.com/user-attachments/assets/deef9aaa-d371-4f3c-9ea1-13f4038be25a",
+    "https://github.com/user-attachments/assets/4e9ebc8b-fce7-4fe7-a085-6ff2d5be1341",
+    "https://github.com/user-attachments/assets/e89fbb22-6054-4356-bf9c-f339ad16fd5e"
+  ],
+  "videos": [],
+  "github": "https://github.com/samadyfahim/GP-appointment-booing-system-with-PERN-stack",
+  "projectLink": ""
+}

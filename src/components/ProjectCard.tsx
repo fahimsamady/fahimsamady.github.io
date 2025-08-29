@@ -1,7 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/types";
-import { Github, Play } from "lucide-react";
+import { Github, Play, Maximize2, X } from "lucide-react";
 import { getTypeIcon, getTypeColor } from "@/lib/projectTypes";
 
 interface ProjectCardProps {
@@ -11,17 +14,19 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const TypeIcon = getTypeIcon(project.type);
   const typeColor = getTypeColor(project.type);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   return (
     <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 h-full flex flex-col">
       {/* Project Image/Video */}
       {project.gallery && project.gallery.length > 0 ? (
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative overflow-hidden">
           <Image
             src={project.gallery[0]}
             alt={project.title}
-            fill
-            className="object-cover"
+            width={400}
+            height={300}
+            className="w-full h-auto object-contain"
           />
           <div className="absolute top-3 right-3">
             <span
@@ -33,10 +38,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
       ) : project.videos && project.videos.length > 0 ? (
-        <div className="relative h-48 overflow-hidden bg-gray-900">
+        <div className="relative overflow-hidden bg-gray-900">
           <iframe
             src={project.videos[0]}
-            className="absolute inset-0 w-full h-full"
+            className="w-full aspect-video"
             title={`${project.title} - Video Preview`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

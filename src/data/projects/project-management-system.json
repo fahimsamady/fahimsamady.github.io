@@ -1,0 +1,28 @@
+{
+  "id": "project-management-system",
+  "title": "Project Management System",
+  "shortDescription": "Web application for teams to manage projects, tasks, and resources.",
+  "type": "web",
+  "order": 4,
+  "duration": "3-4 hours",
+  "longDescription": "Project Management System is a web application for teams to manage projects, tasks, and resources. It is a simple application that allows users to create, edit, and delete projects, tasks, and resources, allocate people to projects and tasks, view the progress and deadlines.",
+  "technologies": ["Laravel", "Vue", "PHP", "MySQL", "Tailwind CSS"],
+  "keyFeatures": [
+    "Create, edit, and delete projects, tasks, and resources",
+    "Allocate people to projects and tasks",
+    "View the progress and deadlines",
+    "Simple and easy to use interface",
+    "User-friendly interface",
+    "Customizable project templates"
+  ],
+  "challenges": [
+    "Laravel is very sophisticated framework for me, so there were not any challenges."
+  ],
+  "keyLearnings": ["Basic CRUD operations and role-based access control."],
+  "gallery": [],
+  "videos": [
+    "https://github.com/user-attachments/assets/edc93146-3242-47a2-8bc2-d4c2358b9eda"
+  ],
+  "github": "https://github.com/samadyfahim/Web-Project-Management-System",
+  "projectLink": ""
+}
