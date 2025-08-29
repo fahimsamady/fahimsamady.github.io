@@ -29,7 +29,7 @@ const Hero = () => {
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-700 text-blue-800"
+              className="hover:text-gray-700 text-blue-600"
             >
               <Linkedin size={22} />
             </a>
