@@ -8,7 +8,7 @@ export default function ProjectNotFound() {
         Project Not Found
       </h2>
       <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
-        The project you're looking for doesn't exist.
+        The project you&apos;re looking for doesn&apos;t exist.
       </p>
       <Link href="/" className="btn text-sm sm:text-base">
         <ArrowLeft size={16} />

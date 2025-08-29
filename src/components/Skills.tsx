@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { getSkills } from "@/lib/data";
 import type { Skills } from "@/types";
-import { LucideIcon } from "lucide-react";
 import { icons } from "@/lib/icons";
 
 const tabList = [
