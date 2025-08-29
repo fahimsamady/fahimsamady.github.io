@@ -27,8 +27,6 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
     setActiveMediaIndex((prev) => (prev < totalMedia - 1 ? prev + 1 : 0));
   }, [totalMedia]);
 
-
-
   // Touch/swipe support for mobile
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -83,19 +81,22 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
   }, [project.gallery]);
 
   // Enhanced navigation with loading states
-  const navigateWithLoading = useCallback((direction: "next" | "previous") => {
-    setIsLoading(true);
+  const navigateWithLoading = useCallback(
+    (direction: "next" | "previous") => {
+      setIsLoading(true);
 
-    // Small delay to show loading state (can be removed if not needed)
-    setTimeout(() => {
-      if (direction === "next") {
-        goToNext();
-      } else {
-        goToPrevious();
-      }
-      setIsLoading(false);
-    }, 100);
-  }, [goToNext, goToPrevious]);
+      // Small delay to show loading state (can be removed if not needed)
+      setTimeout(() => {
+        if (direction === "next") {
+          goToNext();
+        } else {
+          goToPrevious();
+        }
+        setIsLoading(false);
+      }, 100);
+    },
+    [goToNext, goToPrevious]
+  );
 
   // Keyboard navigation
   useEffect(() => {
@@ -189,13 +190,6 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
-              <button
-                onClick={() => setIsFullscreen(true)}
-                className="absolute top-2 right-2 p-2 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-lg transition-all"
-                title="View Fullscreen"
-              >
-                <Maximize2 size={16} className="text-white" />
-              </button>
             </div>
           ) : project.gallery && project.gallery.length > 0 ? (
             <div className="relative w-full flex items-center justify-center">

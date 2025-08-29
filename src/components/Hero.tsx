@@ -12,6 +12,17 @@ const Hero = () => {
       <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 md:gap-20 items-center">
         {/* Left Side */}
         <div className="space-y-6">
+          {/* Logo */}
+          <div className="flex justify-center lg:justify-start">
+            <Image
+              src="/images/logo.png"
+              alt="Fahim Samady Portfolio Logo"
+              width={80}
+              height={80}
+              className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
+            />
+          </div>
+
           <h1 className="text-4xl lg:text-4xl font-bold text-gray-900 leading-tight">
             Portfolio
           </h1>

@@ -61,13 +61,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {project.type.toUpperCase()}
             </span>
           </div>
-          <button
-            onClick={() => setIsFullscreen(true)}
-            className="absolute top-3 left-3 p-2 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-lg transition-all"
-            title="View Fullscreen"
-          >
-            <Maximize2 size={16} className="text-white" />
-          </button>
         </div>
       ) : (
         <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
