@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Play, X, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Project } from "@/types";
@@ -13,44 +13,21 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [preloadProgress, setPreloadProgress] = useState(0);
 
   // Calculate total media count
   const totalMedia =
     (project.videos?.length || 0) + (project.gallery?.length || 0);
 
   // Navigation functions
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setActiveMediaIndex((prev) => (prev > 0 ? prev - 1 : totalMedia - 1));
-  };
+  }, [totalMedia]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setActiveMediaIndex((prev) => (prev < totalMedia - 1 ? prev + 1 : 0));
-  };
+  }, [totalMedia]);
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (isFullscreen) return; // Don't handle keys in fullscreen mode
 
-      switch (e.key) {
-        case "ArrowLeft":
-          e.preventDefault();
-          navigateWithLoading("previous");
-          break;
-        case "ArrowRight":
-          e.preventDefault();
-          navigateWithLoading("next");
-          break;
-        case "Escape":
-          setIsFullscreen(false);
-          break;
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isFullscreen, totalMedia]);
 
   // Touch/swipe support for mobile
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -93,14 +70,12 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
         img.src = imageSrc;
         img.onload = () => {
           loadedCount++;
-          setPreloadProgress((loadedCount / totalImages) * 100);
           console.log(
             `Preloaded image: ${imageSrc} (${loadedCount}/${totalImages})`
           );
         };
         img.onerror = () => {
           loadedCount++;
-          setPreloadProgress((loadedCount / totalImages) * 100);
           console.warn(`Failed to preload image: ${imageSrc}`);
         };
       });
@@ -108,7 +83,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
   }, [project.gallery]);
 
   // Enhanced navigation with loading states
-  const navigateWithLoading = (direction: "next" | "previous") => {
+  const navigateWithLoading = useCallback((direction: "next" | "previous") => {
     setIsLoading(true);
 
     // Small delay to show loading state (can be removed if not needed)
@@ -120,7 +95,31 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
       }
       setIsLoading(false);
     }, 100);
-  };
+  }, [goToNext, goToPrevious]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isFullscreen) return; // Don't handle keys in fullscreen mode
+
+      switch (e.key) {
+        case "ArrowLeft":
+          e.preventDefault();
+          navigateWithLoading("previous");
+          break;
+        case "ArrowRight":
+          e.preventDefault();
+          navigateWithLoading("next");
+          break;
+        case "Escape":
+          setIsFullscreen(false);
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isFullscreen, navigateWithLoading]);
 
   // Only render if there's media to show
   if (
