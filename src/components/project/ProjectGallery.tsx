@@ -23,10 +23,10 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
   }
 
   return (
-    <section className="my-8">
+    <section className="my-6 sm:my-8">
       <div className="space-y-4">
         {/* Main Media */}
-        <div className="relative h-96 rounded-2xl overflow-hidden">
+        <div className="relative h-48 sm:h-64 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden">
           {project.videos &&
           project.videos.length > 0 &&
           activeMediaIndex < project.videos.length ? (
@@ -56,28 +56,28 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
           ) : (
             <div className="w-full h-full bg-gray-100 flex items-center justify-center">
               <div className="text-gray-400 text-center">
-                <div className="text-4xl mb-2">📷</div>
-                <div className="text-lg">No Media Available</div>
+                <div className="text-2xl sm:text-4xl mb-2">📷</div>
+                <div className="text-sm sm:text-lg">No Media Available</div>
               </div>
             </div>
           )}
         </div>
 
         {/* Thumbnail Grid */}
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
           {project.videos &&
             project.videos.map((video, index) => (
               <button
                 key={`video-${index}`}
                 onClick={() => setActiveMediaIndex(index)}
-                className={`relative h-24 rounded-lg overflow-hidden border-2 transition-all ${
+                className={`relative h-16 sm:h-20 md:h-24 rounded-lg overflow-hidden border-2 transition-all ${
                   activeMediaIndex === index
                     ? "border-blue-500"
                     : "border-transparent"
                 }`}
               >
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                  <Play size={24} className="text-white" />
+                  <Play size={16} className="sm:w-6 sm:h-6 text-white" />
                 </div>
                 <video src={video} className="w-full h-full object-cover" />
               </button>
@@ -89,7 +89,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                 onClick={() =>
                   setActiveMediaIndex((project.videos?.length || 0) + index)
                 }
-                className={`relative h-24 rounded-lg overflow-hidden border-2 transition-all ${
+                className={`relative h-16 sm:h-20 md:h-24 rounded-lg overflow-hidden border-2 transition-all ${
                   activeMediaIndex === (project.videos?.length || 0) + index
                     ? "border-blue-500"
                     : "border-transparent"

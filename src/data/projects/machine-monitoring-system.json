@@ -4,7 +4,7 @@
   "shortDescription": "A Windows Forms application for monitoring machine status and tracking maintenance activities.",
   "type": "desktop",
   "order": 1,
-  "duration": "1 week",
+  "duration": "3-4 hours",
   "longDescription": "In this application, I created a Windows Forms application for monitoring machine status and tracking maintenance activities. The application allows users to add, edit, and delete machines, as well as track their maintenance history. The application also allows users to generate reports on machine status and maintenance activities.",
   "technologies": [".Net", "C#", "SQL Server", "Entity Framework Core"],
   "keyFeatures": [

@@ -3,16 +3,17 @@ import { ArrowLeft } from "lucide-react";
 
 export default function ProjectNotFound() {
   return (
-    <div className="section-padding text-center">
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+    <div className="section-padding text-center px-4">
+      <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 sm:mb-4">
         Project Not Found
       </h2>
-      <p className="text-gray-600 mb-6">
+      <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
         The project you're looking for doesn't exist.
       </p>
-      <Link href="/" className="btn">
+      <Link href="/" className="btn text-sm sm:text-base">
         <ArrowLeft size={16} />
-        Back to Home
+        <span className="hidden sm:inline">Back to Home</span>
+        <span className="sm:hidden">Back</span>
       </Link>
     </div>
   );

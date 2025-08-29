@@ -25,14 +25,14 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <main className="min-h-screen pb-24 px-60 bg-white">
+    <main className="min-h-screen pb-24 px-4 sm:px-8 md:px-16 lg:px-32 xl:px-60 bg-white">
       <BackButton />
 
       <ProjectHeader project={project} />
       <ProjectGallery project={project} />
 
       {/* Main Content */}
-      <div className="max-w-4xl">
+      <div className="max-w-4xl mx-auto">
         <ProjectContent project={project} />
       </div>
     </main>
