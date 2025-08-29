@@ -1,13 +1,11 @@
 import { Github, Play, Calendar, User } from "lucide-react";
 import type { Project } from "@/types";
-import { getTypeIcon, getTypeColor } from "@/lib/projectTypes";
 
 interface ProjectHeaderProps {
   project: Project;
 }
 
 export default function ProjectHeader({ project }: ProjectHeaderProps) {
-  const TypeIcon = getTypeIcon(project.type);
 
   return (
     <section className="mb-8 sm:mb-12">
