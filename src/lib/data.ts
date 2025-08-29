@@ -4,7 +4,7 @@ import experienceData from "@/data/experience.json";
 import skillsData from "@/data/skills.json";
 import projectsData from "@/data/projects";
 
-import { Profile, Education, Experience, Skills, ProjectDetail } from "@/types";
+import { Profile, Education, Experience, Skills, Project } from "@/types";
 
 export function getProfile(): Profile {
   return profileData as Profile;
@@ -22,10 +22,10 @@ export function getSkills(): Skills {
   return skillsData as Skills;
 }
 
-export function getProjects(): ProjectDetail[] {
+export function getProjects(): Project[] {
   return projectsData;
 }
 
-export function getProjectById(id: string): ProjectDetail | undefined {
+export function getProjectById(id: string): Project | undefined {
   return projectsData.find((project) => project.id === id);
 }

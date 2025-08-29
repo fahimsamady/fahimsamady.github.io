@@ -47,18 +47,12 @@ export interface Skills {
 
 // PROJECTS
 
-export interface ProjectSummary {
+export interface Project {
   id: string;
   title: string;
   shortDescription: string;
   type: "web" | "mobile" | "desktop" | "other";
-  category: string;
-  technologies: string[];
-  image: string;
   order: number;
-}
-
-export interface ProjectDetail extends Omit<ProjectSummary, "technologies"> {
   duration: string;
   longDescription: string;
   technologies: string[];

@@ -11,7 +11,7 @@ const Hero = () => {
     <section className="section-padding">
       <div className="grid lg:grid-cols-2 gap-20 items-center">
         {/* Left Side */}
-        <div className="space-y-8">
+        <div className="space-y-6">
           <h1 className="text-4xl lg:text-4xl font-bold text-gray-900 leading-tight">
             Portfolio
           </h1>
@@ -29,7 +29,7 @@ const Hero = () => {
               href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-700 text-blue-600"
+              className="text-gray-700 hover:text-blue-600"
             >
               <Linkedin size={22} />
             </a>
@@ -37,15 +37,22 @@ const Hero = () => {
               href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-700 text-gray-900"
+              className="text-gray-700 hover:text-gray-900"
             >
               <Github size={22} />
             </a>
             <a
               href={`tel:${profile.phone}`}
-              className="hover:text-gray-700 text-green-600"
+              className="text-gray-700 inline-flex gap-2 hover:text-green-600"
             >
               <Phone size={22} />
+              <p>{profile.phone}</p>
+            </a>
+          </div>
+
+          <div className="">
+            <a href={`mailto:${profile.email}`} className="hover:text-primary">
+              {profile.email}
             </a>
           </div>
 

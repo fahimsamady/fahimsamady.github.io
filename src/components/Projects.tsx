@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { getProjects } from "@/lib/data";
-import type { ProjectDetail } from "@/types";
+import type { Project } from "@/types";
 import { projectTypes, type ProjectType } from "@/lib/projectTypes";
 import ProjectCard from "./ProjectCard";
 
 export default function Projects() {
-  const projects: ProjectDetail[] = getProjects();
+  const projects: Project[] = getProjects();
   const [activeType, setActiveType] = useState<ProjectType>("all");
 
   const filteredProjects =

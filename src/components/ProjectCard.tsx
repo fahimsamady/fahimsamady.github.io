@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ProjectDetail } from "@/types";
+import type { Project } from "@/types";
 import { Github, Play } from "lucide-react";
 import { getTypeIcon, getTypeColor } from "@/lib/projectTypes";
 
 interface ProjectCardProps {
-  project: ProjectDetail;
+  project: Project;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
@@ -14,23 +14,64 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 h-full flex flex-col">
-      {/* Project Image */}
-      <div className="relative h-48 overflow-hidden">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className="object-cover"
-        />
-        <div className="absolute top-3 right-3">
-          <span
-            className={`px-2 py-1 rounded-full text-xs font-medium ${typeColor}`}
-          >
-            <TypeIcon size={12} className="inline mr-1" />
-            {project.type.toUpperCase()}
-          </span>
+      {/* Project Image/Video */}
+      {project.gallery && project.gallery.length > 0 ? (
+        <div className="relative h-48 overflow-hidden">
+          <Image
+            src={project.gallery[0]}
+            alt={project.title}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute top-3 right-3">
+            <span
+              className={`px-2 py-1 rounded-full text-xs font-medium ${typeColor}`}
+            >
+              <TypeIcon size={12} className="inline mr-1" />
+              {project.type.toUpperCase()}
+            </span>
+          </div>
         </div>
-      </div>
+      ) : project.videos && project.videos.length > 0 ? (
+        <div className="relative h-48 overflow-hidden">
+          <video
+            src={project.videos[0]}
+            className="w-full h-full object-cover"
+            muted
+            loop
+            autoPlay
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-20" />
+          <div className="absolute top-3 right-3">
+            <span
+              className={`px-2 py-1 rounded-full text-xs font-medium ${typeColor}`}
+            >
+              <TypeIcon size={12} className="inline mr-1" />
+              {project.type.toUpperCase()}
+            </span>
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-12 h-12 bg-white bg-opacity-80 rounded-full flex items-center justify-center">
+              <Play size={24} className="text-gray-800" />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+          <div className="text-gray-400 text-center">
+            <div className="text-2xl mb-2">📷</div>
+            <div className="text-sm">No Image yet</div>
+          </div>
+          <div className="absolute top-3 right-3">
+            <span
+              className={`px-2 py-1 rounded-full text-xs font-medium ${typeColor}`}
+            >
+              <TypeIcon size={12} className="inline mr-1" />
+              {project.type.toUpperCase()}
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* Project Content */}
       <div className="p-6 space-y-4 flex-1 flex flex-col">

@@ -1,0 +1,31 @@
+{
+  "id": "machine-monitoring-system",
+  "title": "Machine Monitoring System",
+  "shortDescription": "A Windows Forms application for monitoring machine status and tracking maintenance activities.",
+  "type": "desktop",
+  "order": 1,
+  "duration": "1 week",
+  "longDescription": "In this application, I created a Windows Forms application for monitoring machine status and tracking maintenance activities. The application allows users to add, edit, and delete machines, as well as track their maintenance history. The application also allows users to generate reports on machine status and maintenance activities.",
+  "technologies": [".Net", "C#", "SQL Server", "Entity Framework Core"],
+  "keyFeatures": [
+    "Add, edit, and delete machines",
+    "Track machine maintenance history",
+    "Generate reports on machine status and maintenance activities",
+    "User authentication and authorization",
+    "Data validation and error handling",
+    "Responsive design for different screen sizes",
+    "Integration with third-party services"
+  ],
+  "challenges": ["Implementing a responsive design for different screen sizes"],
+  "keyLearnings": [
+    "Windows Forms application development",
+    "Entity Framework Core",
+    "SQL Server",
+    "Data validation and error handling",
+    "Responsive design for different screen sizes"
+  ],
+  "gallery": [],
+  "videos": ["/projects/machine-monitoring-system-demo.mp4"],
+  "github": "https://github.com/samadyfahim/Machine-Monitoring-System",
+  "projectLink": ""
+}

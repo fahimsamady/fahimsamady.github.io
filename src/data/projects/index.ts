@@ -1,12 +1,12 @@
-import ecommercePlatform from "./ecommerce-platform.json";
+import machineMonitoringSystem from "./machine-monitoring-system.json";
 import fitnessApp from "./fitness-app.json";
 import aiChatbot from "./ai-chatbot.json";
-import type { ProjectDetail } from "@/types";
+import type { Project } from "@/types";
 
-const projects: ProjectDetail[] = [
-  ecommercePlatform,
+const projects: Project[] = [
+  machineMonitoringSystem,
   fitnessApp,
   aiChatbot,
-].sort((a, b) => a.order - b.order) as ProjectDetail[];
+].sort((a, b) => a.order - b.order) as Project[];
 
 export default projects;
