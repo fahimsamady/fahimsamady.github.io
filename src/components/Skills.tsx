@@ -6,9 +6,6 @@ import type { Skills } from "@/types";
 import {
   LucideIcon,
   FileCode,
-  Brain,
-  Users,
-  MessageSquareText,
   Laptop, // for Software tab
   Cog, // for Expertise tab
   Languages, // for Language tab
@@ -47,9 +44,21 @@ export default function Skills() {
       {/* Skills grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {skills[activeTab].map((skill) => {
-          const Icon = (require("lucide-react")[
-            skill.icon as keyof typeof import("lucide-react")
-          ] || FileCode) as LucideIcon;
+          // Use FileCode as default icon
+          let Icon: LucideIcon = FileCode;
+
+          // Map common icon names to actual icon components
+          const iconMap: Record<string, LucideIcon> = {
+            FileCode,
+            Laptop,
+            Cog,
+            Languages,
+            // Add more icons as needed
+          };
+
+          if (skill.icon && iconMap[skill.icon]) {
+            Icon = iconMap[skill.icon];
+          }
 
           return (
             <div key={skill.name} className="skill-tag flex items-center gap-2">

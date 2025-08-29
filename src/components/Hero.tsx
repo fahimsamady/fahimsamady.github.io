@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Mail, Download, Linkedin, Github, Phone } from "lucide-react";
 import { getProfile } from "@/lib/data";
 
@@ -71,9 +72,11 @@ const Hero = () => {
         {/* Right Side - Profile Image */}
         <div className="flex justify-center lg:justify-end">
           <div className="w-80 h-80 rounded-2xl overflow-hidden">
-            <img
+            <Image
               src={profile.profilePicture}
               alt={profile.name}
+              width={320}
+              height={320}
               className="w-full h-full object-cover rounded-2xl"
             />
           </div>

@@ -3,14 +3,7 @@ import educationData from "@/data/education.json";
 import experienceData from "@/data/experience.json";
 import skillsData from "@/data/skills.json";
 
-import {
-  Profile,
-  Education,
-  Experience,
-  Skills,
-  ProjectSummary,
-  ProjectDetail,
-} from "@/types";
+import { Profile, Education, Experience, Skills } from "@/types";
 
 export function getProfile(): Profile {
   return profileData as Profile;
