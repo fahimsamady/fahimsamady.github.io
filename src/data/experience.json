@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Teaching Assistant",
+    "company": "Swansea University",
+    "location": "Part-time On-site",
+    "period": "October 2023 - May 2024",
+    "description": "Worked as a Lab Demonstrator in computer science labs, guiding students through practical applications of the course, troubleshooting code errors, marking, and providing feedback and assessment.",
+    "technologies": [],
+    "achievements": [
+      "Artificial Intelligence (Python, Prolog)",
+      "Programming (Java, Python)",
+      "Algorithms"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Warehouse Operative",
+    "company": "Amazon",
+    "location": "Full-time On-site",
+    "period": "May 2021 - January 2022",
+    "description": "",
+    "technologies": [],
+    "achievements": [
+      "Processed and dispatched orders accurately, achieving a 99.5% order accuracy rate",
+      "Increased output efficiency through optimized workflow processes",
+      "Maintained high standards in a fast-paced environment"
+    ]
+  }
+]

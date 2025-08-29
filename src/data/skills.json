@@ -1,0 +1,49 @@
+{
+  "software": [
+    { "name": "Java", "icon": "FileCode" },
+    { "name": "Python", "icon": "FileCode" },
+    { "name": "Kotlin", "icon": "FileCode" },
+    { "name": "Dart", "icon": "FileCode" },
+    { "name": "JavaScript", "icon": "FileCode" },
+    { "name": "C", "icon": "FileCode" },
+    { "name": "C++", "icon": "FileCode" },
+    { "name": "C#", "icon": "FileCode" },
+    { "name": "Golang", "icon": "FileCode" },
+    { "name": "Haskell", "icon": "FileCode" },
+    { "name": "Prolog", "icon": "FileCode" },
+
+    { "name": "React.js", "icon": "Atom" },
+    { "name": "Vue.js", "icon": "Layout" },
+    { "name": "HTML", "icon": "FileCode" },
+    { "name": "CSS", "icon": "Paintbrush" },
+    { "name": "Tailwind", "icon": "Wind" },
+    { "name": "Node.js", "icon": "Server" },
+    { "name": "Express.js", "icon": "ServerCog" },
+    { "name": "Laravel", "icon": "Box" },
+    { "name": "PHP", "icon": "FileCode" },
+    { "name": ".NET", "icon": "Layers" },
+
+    { "name": "AWS", "icon": "Cloud" },
+    { "name": "MongoDB", "icon": "Database" },
+    { "name": "Firebase", "icon": "Flame" },
+    { "name": "MySQL", "icon": "Database" },
+    { "name": "PostgreSQL", "icon": "Database" },
+    { "name": "Redis", "icon": "Database" },
+    { "name": "Docker", "icon": "Package" },
+    { "name": "RabbitMQ", "icon": "Send" }
+  ],
+  "expertise": [
+    { "name": "Machine Learning", "icon": "Cpu" },
+    { "name": "Embedded Systems", "icon": "Chip" },
+    { "name": "Unity", "icon": "Gamepad2" },
+    { "name": "Git", "icon": "GitBranch" },
+    { "name": "Microservices", "icon": "Network" },
+    { "name": "Critical Thinking", "icon": "Brain" },
+    { "name": "Problem-solving", "icon": "Lightbulb" },
+    { "name": "Collaboration", "icon": "Users" }
+  ],
+  "language": [
+    { "name": "English", "icon": "MessageSquareText" },
+    { "name": "Farsi", "icon": "MessageSquareText" }
+  ]
+}

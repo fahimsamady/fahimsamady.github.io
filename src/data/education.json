@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "degree": "BSc in Computer Science",
+    "institution": "Swansea University",
+    "location": "Swansea, UK",
+    "period": "2020 - 2024",
+    "gpa": "First Class Honours",
+    "description": "",
+    "achievements": [
+      "Big Data and Machine Learning",
+      "Mobile/Web Application Development",
+      "Software Testing",
+      "Embedded System Design",
+      "Software Engineering",
+      "UX/UI"
+    ]
+  },
+  {
+    "id": 2,
+    "degree": "IT BTEC & Computer Science BTEC",
+    "institution": "Trinity High School and Sixth Form Center",
+    "location": "UK",
+    "period": "2018 - 2020",
+    "gpa": "Distinction (IT BTEC), Merit (Computer Science BTEC)",
+    "description": "Two-year BTEC studies combining IT and Computer Science.",
+    "achievements": [
+      "IT BTEC: Distinction - Fundamentals of IT, Virtual and Augmented Reality, Internet of Everything",
+      "Computer Science BTEC: Merit - Fundamentals of computer systems, Principles of computer science, IT systems security and encryption",
+      "Business A Level - Business management and leadership"
+    ]
+  }
+]
