@@ -16,7 +16,7 @@ export default function Projects() {
       : projects.filter((project) => project.type === activeType);
 
   return (
-    <section className="section-padding space-y-8">
+    <section className="section-padding space-y-8 mb-24">
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Projects</h2>
       </div>
