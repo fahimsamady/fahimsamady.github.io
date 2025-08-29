@@ -51,45 +51,24 @@ export interface ProjectSummary {
   id: string;
   title: string;
   shortDescription: string;
-  type: "web" | "mobile" | "ai" | "blockchain" | "desktop";
+  type: "web" | "mobile" | "desktop" | "other";
   category: string;
   technologies: string[];
   image: string;
-  featured: boolean;
-  completionDate: string;
+  order: number;
 }
 
 export interface ProjectDetail extends Omit<ProjectSummary, "technologies"> {
   duration: string;
-  teamSize: number;
-  role: string;
-  heroImage: string;
-  gallery: string[];
-  video?: string;
   longDescription: string;
-  technologies: {
-    frontend?: string[];
-    backend?: string[];
-    payment?: string[];
-    deployment?: string[];
-    testing?: string[];
-    ai?: string[];
-    authentication?: string[];
-    notifications?: string[];
-    analytics?: string[];
-    monitoring?: string[];
-  };
+  technologies: string[];
   keyFeatures: string[];
   challenges: string[];
-  solutions: string[];
   keyLearnings: string[];
-  metrics: Record<string, string>;
+  gallery: string[];
+  videos?: string[];
   github?: string;
-  liveDemo?: string;
-  caseStudy?: string;
-  appStore?: string;
-  playStore?: string;
-  demo?: string;
+  projectLink?: string;
 }
 
 export interface ContactForm {

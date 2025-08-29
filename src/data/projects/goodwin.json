@@ -1,0 +1,63 @@
+{
+  "id": "ecommerce-platform",
+  "title": "E-Commerce Platform",
+  "shortDescription": "A full-stack e-commerce platform with payment integration and admin dashboard",
+  "type": "web",
+  "category": "E-commerce",
+  "image": "/projects/ecommerce-platform/thumb.jpg",
+  "order": 1,
+  "duration": "3 months",
+  "longDescription": "A comprehensive e-commerce platform built with modern web technologies. Features include user authentication, product catalog, shopping cart, payment processing, order management, and an admin dashboard for inventory and sales tracking.",
+  "technologies": [
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Redux Toolkit",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Mongoose",
+    "Stripe",
+    "PayPal",
+    "JWT",
+    "bcrypt",
+    "Nodemailer",
+    "SendGrid",
+    "Google Analytics",
+    "Mixpanel",
+    "Sentry",
+    "LogRocket"
+  ],
+  "keyFeatures": [
+    "User authentication and authorization",
+    "Product catalog with search and filtering",
+    "Shopping cart and wishlist functionality",
+    "Secure payment processing with Stripe and PayPal",
+    "Order tracking and management",
+    "Admin dashboard for inventory and sales",
+    "Responsive design for all devices",
+    "Real-time inventory updates"
+  ],
+  "challenges": [
+    "Implementing secure payment processing",
+    "Managing real-time inventory updates",
+    "Optimizing database queries for large product catalogs",
+    "Ensuring responsive design across all devices",
+    "Implementing comprehensive error handling"
+  ],
+  "keyLearnings": [
+    "Payment gateway integration best practices",
+    "Real-time application architecture",
+    "Database optimization techniques",
+    "Security considerations for e-commerce",
+    "Performance optimization strategies"
+  ],
+  "gallery": [
+    "/projects/ecommerce-platform/gallery-1.jpg",
+    "/projects/ecommerce-platform/gallery-2.jpg",
+    "/projects/ecommerce-platform/gallery-3.jpg",
+    "/projects/ecommerce-platform/gallery-4.jpg"
+  ],
+  "github": "https://github.com/username/ecommerce-platform",
+  "projectLink": ""
+}

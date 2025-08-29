@@ -1,0 +1,63 @@
+{
+  "id": "ai-chatbot",
+  "title": "AI-Powered Customer Support Chatbot",
+  "shortDescription": "An intelligent chatbot that handles customer inquiries using natural language processing",
+  "type": "other",
+  "category": "Customer Service",
+  "image": "/projects/ai-chatbot/thumb.jpg",
+  "order": 3,
+  "duration": "2 months",
+  "longDescription": "An intelligent customer support chatbot that uses advanced natural language processing to understand and respond to customer inquiries. The system integrates with existing customer support workflows and provides 24/7 automated assistance.",
+  "technologies": [
+    "OpenAI GPT-4",
+    "TensorFlow",
+    "NLTK",
+    "SpaCy",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Python",
+    "FastAPI",
+    "Redis",
+    "PostgreSQL",
+    "Docker",
+    "AWS",
+    "Kubernetes",
+    "Pytest",
+    "Selenium",
+    "Prometheus",
+    "Grafana",
+    "ELK Stack"
+  ],
+  "keyFeatures": [
+    "Natural language understanding and processing",
+    "Multi-language support",
+    "Integration with CRM systems",
+    "Sentiment analysis and emotion detection",
+    "Automatic ticket creation and escalation",
+    "Learning from customer interactions",
+    "Analytics and reporting dashboard",
+    "Voice-to-text and text-to-voice capabilities"
+  ],
+  "challenges": [
+    "Training the model with domain-specific data",
+    "Handling ambiguous customer queries",
+    "Ensuring consistent response quality",
+    "Integrating with existing business systems",
+    "Managing conversation context and flow"
+  ],
+  "keyLearnings": [
+    "Natural language processing techniques",
+    "AI model fine-tuning and optimization",
+    "Conversation design principles",
+    "System integration best practices",
+    "AI ethics and bias mitigation"
+  ],
+  "gallery": [
+    "/projects/ai-chatbot/gallery-1.jpg",
+    "/projects/ai-chatbot/gallery-2.jpg",
+    "/projects/ai-chatbot/gallery-3.jpg"
+  ],
+  "github": "https://github.com/username/ai-chatbot",
+  "projectLink": ""
+}

@@ -1,0 +1,64 @@
+{
+  "id": "fitness-app",
+  "title": "Fitness Tracker Mobile App",
+  "shortDescription": "A cross-platform mobile app for tracking workouts and nutrition",
+  "type": "other",
+  "category": "Health & Fitness",
+  "image": "/projects/fitness-app/thumb.jpg",
+  "order": 2,
+  "duration": "4 months",
+  "longDescription": "A comprehensive fitness tracking mobile application that helps users monitor their workouts, track nutrition, set fitness goals, and visualize their progress over time. The app includes social features for sharing achievements and connecting with friends.",
+  "technologies": [
+    "React Native",
+    "TypeScript",
+    "Styled Components",
+    "Firebase",
+    "Cloud Functions",
+    "Firestore",
+    "TensorFlow Lite",
+    "ML Kit",
+    "Firebase Auth",
+    "Google Sign-In",
+    "Firebase Cloud Messaging",
+    "Push Notifications",
+    "Firebase Analytics",
+    "Crashlytics",
+    "Firebase Performance Monitoring"
+  ],
+  "keyFeatures": [
+    "Workout tracking with custom exercises",
+    "Nutrition logging with barcode scanning",
+    "Progress visualization with charts and graphs",
+    "Goal setting and achievement tracking",
+    "Social features and friend connections",
+    "Offline functionality for workouts",
+    "Push notifications and reminders",
+    "Integration with wearable devices"
+  ],
+  "challenges": [
+    "Implementing offline functionality",
+    "Optimizing app performance on low-end devices",
+    "Integrating with various wearable devices",
+    "Managing real-time data synchronization",
+    "Ensuring smooth animations and transitions"
+  ],
+  "keyLearnings": [
+    "Mobile app performance optimization",
+    "Offline-first application design",
+    "Cross-platform development best practices",
+    "Wearable device integration",
+    "Mobile app store deployment process"
+  ],
+  "gallery": [
+    "/projects/fitness-app/gallery-1.jpg",
+    "/projects/fitness-app/gallery-2.jpg",
+    "/projects/fitness-app/gallery-3.jpg",
+    "/projects/fitness-app/gallery-4.jpg"
+  ],
+  "videos": [
+    "/projects/fitness-app/demo-1.mp4",
+    "/projects/fitness-app/demo-2.mp4"
+  ],
+  "github": "https://github.com/username/fitness-tracker",
+  "projectLink": ""
+}
