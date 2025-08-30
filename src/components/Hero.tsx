@@ -3,9 +3,28 @@
 import Image from "next/image";
 import { Mail, Download, Linkedin, Github, Phone } from "lucide-react";
 import { getProfile } from "@/lib/data";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
   const profile = getProfile();
+  const [displayText, setDisplayText] = useState("");
+  const [showCursor, setShowCursor] = useState(false);
+  const fullText = `Hello, I'm ${profile.name}.`;
+
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index < fullText.length) {
+        setDisplayText(fullText.slice(0, index + 1));
+        index++;
+      } else {
+        clearInterval(timer);
+        setShowCursor(true);
+      }
+    }, 50);
+
+    return () => clearInterval(timer);
+  }, [fullText]);
 
   return (
     <section className="section-padding">
@@ -29,7 +48,10 @@ const Hero = () => {
 
           <div>
             <p className="text-2xl mb-3 lg:text-2xl font-bold text-gray-900 leading-tight">
-              Hello, I&apos;m {profile.name}.
+              {displayText}
+              {showCursor && (
+                <span className="inline-block w-0.5 h-6 bg-gray-900 ml-1 animate-blink translate-y-1"></span>
+              )}
             </p>
             <p className="text-base leading-relaxed">{profile.about}</p>
           </div>
