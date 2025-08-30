@@ -47,7 +47,7 @@ export default function ExperienceSection() {
                 </div>
 
                 {/* Company & Location */}
-                <p className="text-xs text-gray-600 flex items-center gap-2">
+                <p className="text-sm text-gray-600 flex items-center gap-2">
                   <MapPin size={12} className="text-gray-400" />
                   <span>
                     {exp.company}, {exp.location}
