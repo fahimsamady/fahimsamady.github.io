@@ -11,13 +11,21 @@ interface ProjectCardProps {
   project: Project;
 }
 
-// Helper to sanitize video URLs (remove autoplay, mute, playsinline)
-function sanitizeVideoUrl(url: string) {
-  return url
-    .replace(/(\?|&)(autoplay|mute|playsinline)=1/g, "")
+// Helper: force mute and strip autoplay/playsinline
+function enforceMutedVideoUrl(url: string) {
+  let clean = url
+    .replace(/(\?|&)(autoplay|playsinline|mute)=\d+/g, "")
     .replace(/&&/g, "&")
     .replace(/\?&/, "?")
     .replace(/\?$/, "");
+
+  if (clean.includes("?")) {
+    clean += "&mute=1";
+  } else {
+    clean += "?mute=1";
+  }
+
+  return clean;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
@@ -55,7 +63,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       ) : project.videos && project.videos.length > 0 ? (
         <div className="relative h-48 overflow-hidden bg-gray-900">
           <iframe
-            src={sanitizeVideoUrl(project.videos[0] || "")}
+            src={enforceMutedVideoUrl(project.videos[0] || "")}
             className="absolute inset-0 w-full h-full"
             title={`${project.title} - Video Preview`}
             frameBorder="0"
@@ -116,7 +124,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           )}
         </div>
 
-        {/* Project Actions - Takes full available height and aligns content to bottom */}
+        {/* Project Actions */}
         <div className="flex gap-2 pt-2 flex-1 items-end">
           <Link
             href={`/projects/${project.id}`}
@@ -171,7 +179,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               />
             ) : project.videos && project.videos.length > 0 ? (
               <iframe
-                src={sanitizeVideoUrl(project.videos[0] || "")}
+                src={enforceMutedVideoUrl(project.videos[0] || "")}
                 className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
                 title={`${project.title} - Video Preview`}
                 frameBorder="0"
