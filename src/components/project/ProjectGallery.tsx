@@ -9,13 +9,21 @@ interface ProjectGalleryProps {
   project: Project;
 }
 
-// Helper to sanitize video URLs (remove autoplay, mute, playsinline)
-function sanitizeVideoUrl(url: string) {
-  return url
-    .replace(/(\?|&)(autoplay|mute|playsinline)=1/g, "")
+// Helper: force mute and strip autoplay/playsinline
+function enforceMutedVideoUrl(url: string) {
+  let clean = url
+    .replace(/(\?|&)(autoplay|playsinline|mute)=\d+/g, "")
     .replace(/&&/g, "&")
     .replace(/\?&/, "?")
     .replace(/\?$/, "");
+
+  if (clean.includes("?")) {
+    clean += "&mute=1";
+  } else {
+    clean += "?mute=1";
+  }
+
+  return clean;
 }
 
 export default function ProjectGallery({ project }: ProjectGalleryProps) {
@@ -23,11 +31,9 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Calculate total media count
   const totalMedia =
     (project.videos?.length || 0) + (project.gallery?.length || 0);
 
-  // Navigation functions
   const goToPrevious = useCallback(() => {
     setActiveMediaIndex((prev) => (prev > 0 ? prev - 1 : totalMedia - 1));
   }, [totalMedia]);
@@ -36,7 +42,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
     setActiveMediaIndex((prev) => (prev < totalMedia - 1 ? prev + 1 : 0));
   }, [totalMedia]);
 
-  // Touch/swipe support for mobile
+  // Touch/swipe support
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
@@ -50,54 +56,29 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) {
-      navigateWithLoading("next");
-    } else if (isRightSwipe) {
-      navigateWithLoading("previous");
-    }
-
+    if (distance > 50) navigateWithLoading("next");
+    if (distance < -50) navigateWithLoading("previous");
     setTouchStart(null);
     setTouchEnd(null);
   };
 
-  // Preload images for faster switching
+  // Preload images
   useEffect(() => {
     if (project.gallery && project.gallery.length > 0) {
-      let loadedCount = 0;
-      const totalImages = project.gallery.length;
-
       project.gallery.forEach((imageSrc) => {
         const img = new window.Image();
         img.src = imageSrc;
-        img.onload = () => {
-          loadedCount++;
-          console.log(
-            `Preloaded image: ${imageSrc} (${loadedCount}/${totalImages})`
-          );
-        };
-        img.onerror = () => {
-          loadedCount++;
-          console.warn(`Failed to preload image: ${imageSrc}`);
-        };
       });
     }
   }, [project.gallery]);
 
-  // Enhanced navigation with loading states
   const navigateWithLoading = useCallback(
     (direction: "next" | "previous") => {
       setIsLoading(true);
       setTimeout(() => {
-        if (direction === "next") {
-          goToNext();
-        } else {
-          goToPrevious();
-        }
+        if (direction === "next") goToNext();
+        else goToPrevious();
         setIsLoading(false);
       }, 100);
     },
@@ -108,7 +89,6 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isFullscreen) return;
-
       switch (e.key) {
         case "ArrowLeft":
           e.preventDefault();
@@ -123,7 +103,6 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
           break;
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isFullscreen, navigateWithLoading]);
@@ -188,7 +167,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
           activeMediaIndex < project.videos.length ? (
             <div className="relative w-full max-w-4xl">
               <iframe
-                src={sanitizeVideoUrl(project.videos[activeMediaIndex] || "")}
+                src={enforceMutedVideoUrl(project.videos[activeMediaIndex] || "")}
                 className="w-full aspect-video"
                 title={`${project.title} - Video ${activeMediaIndex + 1}`}
                 frameBorder="0"
@@ -218,6 +197,98 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                 <Maximize2 size={16} className="text-white" />
               </button>
             </div>
-          ) : (
-            <div className="w-full h-48 sm:h-64 md:h-80 lg:h-96 bg-gray-100 flex items-center justify-center">
-              <div className="text-gray-400 text-c
+          ) : null}
+        </div>
+
+        {/* Thumbnail Grid */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
+          {project.videos &&
+            project.videos.map((video, index) => (
+              <button
+                key={`video-${index}`}
+                onClick={() => setActiveMediaIndex(index)}
+                className={`relative rounded-lg overflow-hidden border-2 transition-all ${
+                  activeMediaIndex === index
+                    ? "border-blue-500"
+                    : "border-transparent"
+                }`}
+              >
+                <iframe
+                  src={enforceMutedVideoUrl(video || "")}
+                  className="w-full aspect-video"
+                  title={`${project.title} - Video ${index + 1}`}
+                  frameBorder="0"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                  <Play size={16} className="sm:w-6 sm:h-6 text-white" />
+                </div>
+              </button>
+            ))}
+          {project.gallery &&
+            project.gallery.map((image, index) => (
+              <button
+                key={`image-${index}`}
+                onClick={() =>
+                  setActiveMediaIndex((project.videos?.length || 0) + index)
+                }
+                className={`relative h-16 sm:h-20 md:h-24 rounded-lg overflow-hidden border-2 transition-all ${
+                  activeMediaIndex === (project.videos?.length || 0) + index
+                    ? "border-blue-500"
+                    : "border-transparent"
+                }`}
+              >
+                <Image
+                  src={image}
+                  alt={`${project.title} - Thumbnail ${index + 1}`}
+                  fill
+                  className="object-cover"
+                />
+              </button>
+            ))}
+        </div>
+      </div>
+
+      {/* Fullscreen Modal */}
+      {isFullscreen && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4">
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* Close Button */}
+            <button
+              onClick={() => setIsFullscreen(false)}
+              className="absolute top-4 right-4 z-10 p-3 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full transition-all"
+              title="Close Fullscreen"
+            >
+              <X size={24} className="text-white" />
+            </button>
+
+            {project.videos &&
+            project.videos.length > 0 &&
+            activeMediaIndex < project.videos.length ? (
+              <iframe
+                src={enforceMutedVideoUrl(project.videos[activeMediaIndex] || "")}
+                className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
+                title={`${project.title} - Video ${activeMediaIndex + 1}`}
+                frameBorder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : project.gallery && project.gallery.length > 0 ? (
+              <Image
+                src={
+                  project.gallery[
+                    activeMediaIndex - (project.videos?.length || 0)
+                  ]
+                }
+                alt={`${project.title} - Media ${activeMediaIndex + 1}`}
+                width={1200}
+                height={900}
+                className="max-w-full max-h-[90vh] object-contain"
+              />
+            ) : null}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
