@@ -166,7 +166,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
                 title={`${project.title} - Video Preview`}
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             ) : null}
