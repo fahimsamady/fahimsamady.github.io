@@ -323,7 +323,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                 className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
                 title={`${project.title} - Video ${activeMediaIndex + 1}`}
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             ) : project.gallery && project.gallery.length > 0 ? (
