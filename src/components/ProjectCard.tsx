@@ -46,11 +46,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       ) : project.videos && project.videos.length > 0 ? (
         <div className="relative h-48 overflow-hidden bg-gray-900">
           <iframe
-            src={project.videos[0]}
+            src={project.videos[0]?.replace(/(\?|&)autoplay=1/, '')}
             className="absolute inset-0 w-full h-full"
             title={`${project.title} - Video Preview`}
             frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
           <div className="absolute top-3 right-3">
@@ -162,14 +162,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               />
             ) : project.videos && project.videos.length > 0 ? (
               <iframe
-  src={project.videos[0]?.replace(/(\?|&)autoplay=1/, '')}
-  className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
-  title={`${project.title} - Video Preview`}
-  frameBorder="0"
-  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-/>
-
+                src={project.videos[0]?.replace(/(\?|&)autoplay=1/, '')}
+                className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
+                title={`${project.title} - Video Preview`}
+                frameBorder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             ) : null}
           </div>
         </div>
