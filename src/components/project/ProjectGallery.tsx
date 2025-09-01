@@ -319,13 +319,14 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
             project.videos.length > 0 &&
             activeMediaIndex < project.videos.length ? (
               <iframe
-                src={project.videos[activeMediaIndex]}
-                className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
-                title={`${project.title} - Video ${activeMediaIndex + 1}`}
-                frameBorder="0"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+  src={project.videos[activeMediaIndex]?.replace(/(\?|&)autoplay=1/, '')}
+  className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
+  title={`${project.title} - Video ${activeMediaIndex + 1}`}
+  frameBorder="0"
+  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+/>
+
             ) : project.gallery && project.gallery.length > 0 ? (
               <Image
                 src={
