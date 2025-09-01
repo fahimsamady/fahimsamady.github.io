@@ -183,11 +183,11 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
           activeMediaIndex < project.videos.length ? (
             <div className="relative w-full max-w-4xl">
               <iframe
-                src={project.videos[activeMediaIndex]}
+                src={project.videos[activeMediaIndex]?.replace(/(\?|&)autoplay=1/, '')}
                 className="w-full aspect-video"
                 title={`${project.title} - Video ${activeMediaIndex + 1}`}
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             </div>
@@ -237,11 +237,11 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                 }`}
               >
                 <iframe
-                  src={video}
+                  src={video?.replace(/(\?|&)autoplay=1/, '')}
                   className="w-full aspect-video"
                   title={`${project.title} - Video ${index + 1}`}
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
                   <Play size={16} className="sm:w-6 sm:h-6 text-white" />
@@ -319,14 +319,13 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
             project.videos.length > 0 &&
             activeMediaIndex < project.videos.length ? (
               <iframe
-  src={project.videos[activeMediaIndex]?.replace(/(\?|&)autoplay=1/, '')}
-  className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
-  title={`${project.title} - Video ${activeMediaIndex + 1}`}
-  frameBorder="0"
-  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-/>
-
+                src={project.videos[activeMediaIndex]?.replace(/(\?|&)autoplay=1/, '')}
+                className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
+                title={`${project.title} - Video ${activeMediaIndex + 1}`}
+                frameBorder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             ) : project.gallery && project.gallery.length > 0 ? (
               <Image
                 src={
