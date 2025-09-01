@@ -9,6 +9,15 @@ interface ProjectGalleryProps {
   project: Project;
 }
 
+// Helper to sanitize video URLs (remove autoplay, mute, playsinline)
+function sanitizeVideoUrl(url: string) {
+  return url
+    .replace(/(\?|&)(autoplay|mute|playsinline)=1/g, "")
+    .replace(/&&/g, "&")
+    .replace(/\?&/, "?")
+    .replace(/\?$/, "");
+}
+
 export default function ProjectGallery({ project }: ProjectGalleryProps) {
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -62,7 +71,6 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
       let loadedCount = 0;
       const totalImages = project.gallery.length;
 
-      // Preload all images immediately
       project.gallery.forEach((imageSrc) => {
         const img = new window.Image();
         img.src = imageSrc;
@@ -84,8 +92,6 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
   const navigateWithLoading = useCallback(
     (direction: "next" | "previous") => {
       setIsLoading(true);
-
-      // Small delay to show loading state (can be removed if not needed)
       setTimeout(() => {
         if (direction === "next") {
           goToNext();
@@ -101,7 +107,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isFullscreen) return; // Don't handle keys in fullscreen mode
+      if (isFullscreen) return;
 
       switch (e.key) {
         case "ArrowLeft":
@@ -122,7 +128,6 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isFullscreen, navigateWithLoading]);
 
-  // Only render if there's media to show
   if (
     !(
       (project.gallery && project.gallery.length > 0) ||
@@ -183,7 +188,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
           activeMediaIndex < project.videos.length ? (
             <div className="relative w-full max-w-4xl">
               <iframe
-                src={project.videos[activeMediaIndex]?.replace(/(\?|&)autoplay=1/, '')}
+                src={sanitizeVideoUrl(project.videos[activeMediaIndex] || "")}
                 className="w-full aspect-video"
                 title={`${project.title} - Video ${activeMediaIndex + 1}`}
                 frameBorder="0"
@@ -215,133 +220,4 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
             </div>
           ) : (
             <div className="w-full h-48 sm:h-64 md:h-80 lg:h-96 bg-gray-100 flex items-center justify-center">
-              <div className="text-gray-400 text-center">
-                <div className="text-2xl sm:text-4xl mb-2">📷</div>
-                <div className="text-sm sm:text-lg">No Media Available</div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Thumbnail Grid */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
-          {project.videos &&
-            project.videos.map((video, index) => (
-              <button
-                key={`video-${index}`}
-                onClick={() => setActiveMediaIndex(index)}
-                className={`relative rounded-lg overflow-hidden border-2 transition-all ${
-                  activeMediaIndex === index
-                    ? "border-blue-500"
-                    : "border-transparent"
-                }`}
-              >
-                <iframe
-                  src={video?.replace(/(\?|&)autoplay=1/, '')}
-                  className="w-full aspect-video"
-                  title={`${project.title} - Video ${index + 1}`}
-                  frameBorder="0"
-                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
-                  <Play size={16} className="sm:w-6 sm:h-6 text-white" />
-                </div>
-              </button>
-            ))}
-          {project.gallery &&
-            project.gallery.map((image, index) => (
-              <button
-                key={`image-${index}`}
-                onClick={() =>
-                  setActiveMediaIndex((project.videos?.length || 0) + index)
-                }
-                className={`relative h-16 sm:h-20 md:h-24 rounded-lg overflow-hidden border-2 transition-all ${
-                  activeMediaIndex === (project.videos?.length || 0) + index
-                    ? "border-blue-500"
-                    : "border-transparent"
-                }`}
-              >
-                <Image
-                  src={image}
-                  alt={`${project.title} - Thumbnail ${index + 1}`}
-                  fill
-                  className="object-cover"
-                />
-              </button>
-            ))}
-        </div>
-      </div>
-
-      {/* Fullscreen Modal */}
-      {isFullscreen && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4">
-          <div className="relative w-full h-full flex items-center justify-center">
-            {/* Close Button */}
-            <button
-              onClick={() => setIsFullscreen(false)}
-              className="absolute top-4 right-4 z-10 p-3 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full transition-all"
-              title="Close Fullscreen"
-            >
-              <X size={24} className="text-white" />
-            </button>
-
-            {/* Navigation Arrows in Fullscreen */}
-            {totalMedia > 1 && (
-              <>
-                <button
-                  onClick={() => navigateWithLoading("previous")}
-                  disabled={isLoading}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                  title="Previous"
-                >
-                  <ChevronLeft size={24} className="text-white" />
-                </button>
-                <button
-                  onClick={() => navigateWithLoading("next")}
-                  disabled={isLoading}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                  title="Next"
-                >
-                  <ChevronRight size={24} className="text-white" />
-                </button>
-              </>
-            )}
-
-            {/* Media Counter in Fullscreen */}
-            {totalMedia > 1 && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 px-4 py-2 bg-black bg-opacity-50 rounded-full text-white text-lg">
-                {activeMediaIndex + 1} / {totalMedia}
-              </div>
-            )}
-
-            {/* Fullscreen Content */}
-            {project.videos &&
-            project.videos.length > 0 &&
-            activeMediaIndex < project.videos.length ? (
-              <iframe
-                src={project.videos[activeMediaIndex]?.replace(/(\?|&)autoplay=1/, '')}
-                className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
-                title={`${project.title} - Video ${activeMediaIndex + 1}`}
-                frameBorder="0"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            ) : project.gallery && project.gallery.length > 0 ? (
-              <Image
-                src={
-                  project.gallery[
-                    activeMediaIndex - (project.videos?.length || 0)
-                  ]
-                }
-                alt={`${project.title} - Media ${activeMediaIndex + 1}`}
-                width={1200}
-                height={900}
-                className="max-w-full max-h-[90vh] object-contain"
-              />
-            ) : null}
-          </div>
-        </div>
-      )}
-    </section>
-  );
-}
+              <div className="text-gray-400 text-c
