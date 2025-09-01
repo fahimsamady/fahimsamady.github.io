@@ -11,6 +11,15 @@ interface ProjectCardProps {
   project: Project;
 }
 
+// Helper to sanitize video URLs (remove autoplay, mute, playsinline)
+function sanitizeVideoUrl(url: string) {
+  return url
+    .replace(/(\?|&)(autoplay|mute|playsinline)=1/g, "")
+    .replace(/&&/g, "&")
+    .replace(/\?&/, "?")
+    .replace(/\?$/, "");
+}
+
 export default function ProjectCard({ project }: ProjectCardProps) {
   const TypeIcon = getTypeIcon(project.type);
   const typeColor = getTypeColor(project.type);
@@ -46,7 +55,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       ) : project.videos && project.videos.length > 0 ? (
         <div className="relative h-48 overflow-hidden bg-gray-900">
           <iframe
-            src={project.videos[0]?.replace(/(\?|&)autoplay=1/, '')}
+            src={sanitizeVideoUrl(project.videos[0] || "")}
             className="absolute inset-0 w-full h-full"
             title={`${project.title} - Video Preview`}
             frameBorder="0"
@@ -162,7 +171,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               />
             ) : project.videos && project.videos.length > 0 ? (
               <iframe
-                src={project.videos[0]?.replace(/(\?|&)autoplay=1/, '')}
+                src={sanitizeVideoUrl(project.videos[0] || "")}
                 className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
                 title={`${project.title} - Video Preview`}
                 frameBorder="0"
