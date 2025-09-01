@@ -11,7 +11,7 @@ interface ProjectCardProps {
   project: Project;
 }
 
-// Helper: force mute and strip autoplay/playsinline
+// Helper: clean URL and ensure mute=1
 function enforceMutedVideoUrl(url: string) {
   let clean = url
     .replace(/(\?|&)(autoplay|playsinline|mute)=\d+/g, "")
@@ -26,6 +26,13 @@ function enforceMutedVideoUrl(url: string) {
   }
 
   return clean;
+}
+
+// Ensure iframe has muted attribute at DOM level
+function enforceMutedAttr(el: HTMLIFrameElement | null) {
+  if (el) {
+    el.setAttribute("muted", "");
+  }
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
@@ -63,11 +70,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       ) : project.videos && project.videos.length > 0 ? (
         <div className="relative h-48 overflow-hidden bg-gray-900">
           <iframe
+            ref={enforceMutedAttr}
             src={enforceMutedVideoUrl(project.videos[0] || "")}
             className="absolute inset-0 w-full h-full"
             title={`${project.title} - Video Preview`}
             frameBorder="0"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="encrypted-media; picture-in-picture"
             allowFullScreen
           />
           <div className="absolute top-3 right-3">
@@ -159,7 +167,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {isFullscreen && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4">
           <div className="relative w-full h-full flex items-center justify-center">
-            {/* Close Button */}
             <button
               onClick={() => setIsFullscreen(false)}
               className="absolute top-4 right-4 z-10 p-3 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full transition-all"
@@ -168,7 +175,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               <X size={24} className="text-white" />
             </button>
 
-            {/* Fullscreen Content */}
             {project.gallery && project.gallery.length > 0 ? (
               <Image
                 src={project.gallery[0]}
@@ -179,11 +185,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               />
             ) : project.videos && project.videos.length > 0 ? (
               <iframe
+                ref={enforceMutedAttr}
                 src={enforceMutedVideoUrl(project.videos[0] || "")}
                 className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
                 title={`${project.title} - Video Preview`}
                 frameBorder="0"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="encrypted-media; picture-in-picture"
                 allowFullScreen
               />
             ) : null}
