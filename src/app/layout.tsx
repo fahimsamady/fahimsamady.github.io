@@ -6,6 +6,11 @@ import BackToTop from "@/components/BackToTop";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NODE_ENV === "production"
+      ? "https://fahimsamady.github.io"
+      : "http://localhost:3000"
+  ),
   title: "Fahim Samady - Software Engineer Portfolio",
   description:
     "Software Engineer specializing in full-stack development, mobile applications, and cloud technologies. View my projects, experience, and skills.",
