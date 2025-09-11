@@ -1,4 +1,4 @@
-import { getProjectById } from "@/lib/data";
+import { getProjectById, getProjects } from "@/lib/data";
 import {
   BackButton,
   ProjectHeader,
@@ -11,6 +11,13 @@ interface ProjectPageProps {
   params: Promise<{
     id: string;
   }>;
+}
+
+export async function generateStaticParams() {
+  const projects = getProjects();
+  return projects.map((project) => ({
+    id: project.id,
+  }));
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {

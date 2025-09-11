@@ -1,11 +1,11 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Removed static export settings for Vercel deployment
-  // Vercel handles Next.js builds automatically
-  
-  // Configure allowed image domains for external images
+  // Enable static export for GitHub Pages
+  output: 'export',
+  trailingSlash: true,
   images: {
+    unoptimized: true, // Required for static export
     remotePatterns: [
       {
         protocol: 'https',

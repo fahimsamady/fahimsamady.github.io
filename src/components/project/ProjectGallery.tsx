@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { Play, X, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
+import { X } from "lucide-react";
 import type { Project } from "@/types";
 
 interface ProjectGalleryProps {
@@ -19,20 +19,8 @@ function cleanVideoUrl(url: string) {
 }
 
 export default function ProjectGallery({ project }: ProjectGalleryProps) {
-  const [activeMediaIndex, setActiveMediaIndex] = useState(0);
+  const [activeMediaIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const totalMedia =
-    (project.videos?.length || 0) + (project.gallery?.length || 0);
-
-  const goToPrevious = useCallback(() => {
-    setActiveMediaIndex((prev) => (prev > 0 ? prev - 1 : totalMedia - 1));
-  }, [totalMedia]);
-
-  const goToNext = useCallback(() => {
-    setActiveMediaIndex((prev) => (prev < totalMedia - 1 ? prev + 1 : 0));
-  }, [totalMedia]);
 
   // Add muted attribute to iframes after render
   const enforceMuted = (iframe: HTMLIFrameElement | null) => {
