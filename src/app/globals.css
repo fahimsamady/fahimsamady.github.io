@@ -1,69 +1,95 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    --primary: #000000;
-    --primary-foreground: #ffffff;
+@theme {
+  --color-primary: #003f88;
+  --color-surface: #c1d8f0;
+  --color-onSurface: #0b192f;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/Nunito-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/Nunito-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/Nunito-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/fonts/Nunito-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  @apply w-full h-full;
+  background-color: var(--color-surface);
+  color: var(--color-onSurface);
+  font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.main {
+  @apply min-h-screen px-4 sm:px-8 md:px-16 lg:px-56 xl:px-60;
+}
+
+.section-padding {
+  @apply py-16;
+}
+
+.btn {
+  @apply px-4 py-2 bg-primary text-white rounded-xl hover:bg-primary/80 transition-colors duration-200;
+}
+
+.skill-tag {
+  @apply px-3 py-2 rounded-xl bg-primary text-white hover:bg-primary/80;
+}
+
+.tab-active {
+  @apply bg-gray-100;
+}
+
+.tab-inactive {
+  @apply hover:bg-gray-100 text-gray-600;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
   }
-
-  body {
-    background-color: white;
-    color: #111827;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      sans-serif;
-  }
-
-  html {
-    scroll-behavior: smooth;
+  51%,
+  100% {
+    opacity: 0;
   }
 }
 
-@layer components {
-  .main {
-    @apply min-h-screen px-4 sm:px-8 md:px-16 lg:px-56 xl:px-60 bg-white;
-  }
-
-  .section-padding {
-    @apply py-6 md:py-10 lg:py-10;
-  }
-
-  .btn {
-    @apply bg-white text-sm border border-gray-300 text-gray-700 font-medium px-3 py-2 rounded-xl hover:bg-gray-100 transition-colors duration-200;
-  }
-
-  .skill-tag {
-    @apply px-3 py-2 rounded-xl bg-white shadow-sm border border-gray-200 text-sm font-medium;
-  }
-
-  .tab-active {
-    @apply bg-gray-100;
-  }
-
-  .tab-inactive {
-    @apply hover:bg-gray-100 text-gray-600;
-  }
-
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  @keyframes blink {
-    0%,
-    50% {
-      opacity: 1;
-    }
-    51%,
-    100% {
-      opacity: 0;
-    }
-  }
-
-  .animate-blink {
-    animation: blink 1s ease-in-out infinite;
-  }
+.animate-blink {
+  animation: blink 1s ease-in-out infinite;
 }

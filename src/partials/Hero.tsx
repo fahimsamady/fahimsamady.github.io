@@ -9,13 +9,16 @@ const Hero = () => {
   const profile = getProfile();
   const [displayText, setDisplayText] = useState("");
   const [showCursor, setShowCursor] = useState(false);
-  const fullText = `Hello, I'm ${profile.name}.`;
+
+  const FULL_TEXT = "hi, I'm Fahim.";
+  const NAME_START_INDEX = 8;
+  const NAME_END_INDEX = 14;
 
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
-      if (index < fullText.length) {
-        setDisplayText(fullText.slice(0, index + 1));
+      if (index < FULL_TEXT.length) {
+        setDisplayText(FULL_TEXT.slice(0, index + 1));
         index++;
       } else {
         clearInterval(timer);
@@ -24,36 +27,29 @@ const Hero = () => {
     }, 50);
 
     return () => clearInterval(timer);
-  }, [fullText]);
+  }, []);
 
   return (
     <section className="section-padding">
-      <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 md:gap-20 items-center">
+      <div className="grid lg:grid-cols-[65%_35%] gap-10 sm:gap-16 md:gap-20 items-center">
         {/* Left Side */}
         <div className="space-y-6">
-          {/* Logo */}
-          <div className="flex justify-center lg:justify-start">
-            <Image
-              src="/images/logo.png"
-              alt="Fahim Samady Portfolio Logo"
-              width={80}
-              height={80}
-              className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
-            />
-          </div>
-
-          <h1 className="text-4xl lg:text-4xl font-bold text-gray-900 leading-tight">
-            Portfolio
-          </h1>
-
           <div>
-            <p className="text-2xl mb-3 lg:text-2xl font-bold text-gray-900 leading-tight">
-              {displayText}
+            <p className="text-6xl mb-3 font-bold leading-tight">
+              <span className="text-onsurface">
+                {displayText.substring(0, NAME_START_INDEX)}
+              </span>
+              <span className="text-primary">
+                {displayText.substring(NAME_START_INDEX, NAME_END_INDEX)}
+              </span>
+              <span className="text-onsurface">
+                {displayText.substring(NAME_END_INDEX)}
+              </span>
               {showCursor && (
-                <span className="inline-block w-0.5 h-6 bg-gray-900 ml-1 animate-blink translate-y-1"></span>
+                <span className="inline-block w-2 h-[3.5rem] bg-primary rounded ml-1 animate-blink align-middle mb-3"></span>
               )}
             </p>
-            <p className="text-base leading-relaxed">{profile.about}</p>
+            <p className="leading-relaxed">{profile.about}</p>
           </div>
 
           {/* Socials */}

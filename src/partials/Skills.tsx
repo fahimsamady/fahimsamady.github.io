@@ -25,7 +25,7 @@ export default function Skills() {
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            className={`px-4 py-2 text-base rounded-xl text-sm font-medium flex items-center gap-2 transition-all ${
+            className={`px-4 py-2 rounded-xl text-sm font-medium flex items-center gap-2 transition-all ${
               activeTab === tab.key ? "tab-active" : "tab-inactive"
             }`}
           >

@@ -1,7 +1,8 @@
-import Hero from "@/components/Hero";
-import Skills from "@/components/Skills";
-import Education from "@/components/Education";
-import Experience from "@/components/Experience";
+import Hero from "@/partials/Hero";
+import Skills from "@/partials/Skills";
+import Education from "@/partials/Education";
+import Experience from "@/partials/Experience";
+import Projects from "@/partials/Projects";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Education />
       <Skills />
       <Experience />
+      <Projects />
     </main>
   );
 }

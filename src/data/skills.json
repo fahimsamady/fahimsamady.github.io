@@ -44,6 +44,6 @@
   ],
   "language": [
     { "name": "English", "icon": "MessageSquareText" },
-    { "name": "Farsi", "icon": "MessageSquareText" }
+    { "name": "Persian", "icon": "MessageSquareText" }
   ]
 }
