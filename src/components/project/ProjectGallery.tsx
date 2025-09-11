@@ -71,7 +71,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                     className="w-full h-full rounded-xl"
                     title={item.alt}
                     frameBorder="0"
-                    allow="encrypted-media; picture-in-picture"
+                    allow=""
                     allowFullScreen
                   />
                 </div>
@@ -90,10 +90,12 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-xl" />
 
-              {/* Fullscreen Button */}
-              <div className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/70 rounded-lg transition-all backdrop-blur-sm opacity-0 group-hover:opacity-100">
-                <Play size={16} className="text-white" />
-              </div>
+              {/* Fullscreen Button - Only for Images */}
+              {item.type === "image" && (
+                <div className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/70 rounded-lg transition-all backdrop-blur-sm opacity-0 group-hover:opacity-100">
+                  <Play size={16} className="text-white" />
+                </div>
+              )}
 
               {/* Media Type Indicator */}
               <div className="absolute top-4 left-4 px-2 py-1 bg-black/50 text-white text-xs rounded-lg backdrop-blur-sm">
