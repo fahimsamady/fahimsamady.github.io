@@ -1,143 +1,57 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/types";
-import { Github, Play, Maximize2, X } from "lucide-react";
-import { getTypeIcon, getTypeColor } from "@/lib/projectTypes";
+import { Github, Play } from "lucide-react";
+import { getTypeIcon } from "@/lib/projectTypes";
 
 interface ProjectCardProps {
   project: Project;
 }
 
-// Helper: clean URL and ensure mute=1
-function enforceMutedVideoUrl(url: string) {
-  let clean = url
-    .replace(/(\?|&)(autoplay|playsinline|mute)=\d+/g, "")
-    .replace(/&&/g, "&")
-    .replace(/\?&/, "?")
-    .replace(/\?$/, "");
-
-  if (clean.includes("?")) {
-    clean += "&mute=1";
-  } else {
-    clean += "?mute=1";
-  }
-
-  return clean;
-}
-
-// Ensure iframe has muted attribute at DOM level
-function enforceMutedAttr(el: HTMLIFrameElement | null) {
-  if (el) {
-    el.setAttribute("muted", "");
-  }
-}
-
 export default function ProjectCard({ project }: ProjectCardProps) {
   const TypeIcon = getTypeIcon(project.type);
-  const typeColor = getTypeColor(project.type);
-  const [isFullscreen, setIsFullscreen] = useState(false);
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 h-full flex flex-col">
-      {/* Project Image/Video */}
-      {project.gallery && project.gallery.length > 0 ? (
-        <div className="relative h-48 overflow-hidden">
-          <Image
-            src={project.gallery[0]}
-            alt={project.title}
-            fill
-            className="object-cover"
-          />
-          <div className="absolute top-3 right-3">
-            <span
-              className={`px-2 py-1 rounded-full text-xs font-medium ${typeColor}`}
-            >
-              <TypeIcon size={12} className="inline mr-1" />
-              {project.type.toUpperCase()}
-            </span>
-          </div>
-          <button
-            onClick={() => setIsFullscreen(true)}
-            className="absolute top-3 left-3 p-2 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-lg transition-all"
-            title="View Fullscreen"
-          >
-            <Maximize2 size={16} className="text-white" />
-          </button>
+    <div className="card group h-full flex flex-col">
+      {/* Project Header */}
+      <div className="p-5 pb-3">
+        <div className="flex items-center justify-between mb-3">
+          <span className="tech-tag">
+            <TypeIcon size={12} className="inline mr-1" />
+            {project.type.toUpperCase()}
+          </span>
         </div>
-      ) : project.videos && project.videos.length > 0 ? (
-        <div className="relative h-48 overflow-hidden bg-gray-900">
-          <iframe
-            ref={enforceMutedAttr}
-            src={enforceMutedVideoUrl(project.videos[0] || "")}
-            className="absolute inset-0 w-full h-full"
-            title={`${project.title} - Video Preview`}
-            frameBorder="0"
-            allow="encrypted-media; picture-in-picture"
-            allowFullScreen
-          />
-          <div className="absolute top-3 right-3">
-            <span
-              className={`px-2 py-1 rounded-full text-xs font-medium ${typeColor}`}
-            >
-              <TypeIcon size={12} className="inline mr-1" />
-              {project.type.toUpperCase()}
-            </span>
-          </div>
-        </div>
-      ) : (
-        <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
-          <div className="text-gray-400 text-center">
-            <div className="text-2xl mb-2">📷</div>
-            <div className="text-sm">No Image yet</div>
-          </div>
-          <div className="absolute top-3 right-3">
-            <span
-              className={`px-2 py-1 rounded-full text-xs font-medium ${typeColor}`}
-            >
-              <TypeIcon size={12} className="inline mr-1" />
-              {project.type.toUpperCase()}
-            </span>
-          </div>
-        </div>
-      )}
+      </div>
 
       {/* Project Content */}
-      <div className="p-6 space-y-4 flex-1 flex flex-col">
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+      <div className="px-5 pb-5 flex-1 flex flex-col">
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold text-onSurface mb-2 group-hover:text-primary transition-colors">
             {project.title}
           </h3>
-          <p className="text-sm text-gray-600 line-clamp-2">
-            {project.shortDescription}
+          <p className="text-sm text-onSurface/70 text-justify">
+            {project.description}
           </p>
         </div>
 
         {/* Technologies Preview */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5 mt-3">
           {project.technologies.slice(0, 3).map((tech, index) => (
-            <span
-              key={index}
-              className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-xl"
-            >
+            <span key={index} className="tech-tag">
               {tech}
             </span>
           ))}
           {project.technologies.length > 3 && (
-            <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-xl">
+            <span className="tech-tag">
               +{project.technologies.length - 3} more
             </span>
           )}
         </div>
 
         {/* Project Actions */}
-        <div className="flex gap-2 pt-2 flex-1 items-end">
-          <Link
-            href={`/projects/${project.id}`}
-            className="flex-1 btn text-center"
-          >
+        <div className="flex gap-2 pt-3 items-end">
+          <Link href={`/projects/${project.id}`} className="btn text-sm">
             View Details
           </Link>
           {project.github && (
@@ -145,7 +59,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn"
+              className="p-2 rounded-lg hover:border-primary hover:text-primary transition-colors"
             >
               <Github size={16} />
             </a>
@@ -155,48 +69,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               href={project.projectLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn"
+              className="p-2 border border-gray-200 rounded-lg hover:border-primary hover:text-primary transition-colors"
             >
               <Play size={16} />
             </a>
           )}
         </div>
       </div>
-
-      {/* Fullscreen Modal */}
-      {isFullscreen && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4">
-          <div className="relative w-full h-full flex items-center justify-center">
-            <button
-              onClick={() => setIsFullscreen(false)}
-              className="absolute top-4 right-4 z-10 p-3 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full transition-all"
-              title="Close Fullscreen"
-            >
-              <X size={24} className="text-white" />
-            </button>
-
-            {project.gallery && project.gallery.length > 0 ? (
-              <Image
-                src={project.gallery[0]}
-                alt={project.title}
-                width={1200}
-                height={900}
-                className="max-w-full max-h-[90vh] object-contain"
-              />
-            ) : project.videos && project.videos.length > 0 ? (
-              <iframe
-                ref={enforceMutedAttr}
-                src={enforceMutedVideoUrl(project.videos[0] || "")}
-                className="w-full h-full max-w-7xl max-h-[90vh] aspect-video"
-                title={`${project.title} - Video Preview`}
-                frameBorder="0"
-                allow="encrypted-media; picture-in-picture"
-                allowFullScreen
-              />
-            ) : null}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

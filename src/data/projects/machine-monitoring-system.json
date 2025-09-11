@@ -1,11 +1,10 @@
 {
   "id": "machine-monitoring-system",
   "title": "Machine Monitoring System",
-  "shortDescription": "A Windows application for monitoring machine status and tracking maintenance activities.",
+  "description": "A Windows application for monitoring machine status and tracking maintenance activities. The application allows users to add, edit, and delete machines, as well as track their maintenance history. The application also allows users to generate reports on machine status and maintenance activities.",
   "type": "desktop",
   "order": 5,
   "duration": "3-4 hours",
-  "longDescription": "In this application, I created a Windows application for monitoring machine status and tracking maintenance activities. The application allows users to add, edit, and delete machines, as well as track their maintenance history. The application also allows users to generate reports on machine status and maintenance activities.",
   "technologies": [".Net", "C#", "SQL Server", "Entity Framework Core"],
   "keyFeatures": [
     "Add, edit, and delete machines",

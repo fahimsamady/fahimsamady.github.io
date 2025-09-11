@@ -17,9 +17,7 @@ export default function Projects() {
 
   return (
     <section className="section-padding space-y-8 mb-24">
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Projects</h2>
-      </div>
+      <h2 className="section-title">Projects</h2>
 
       {/* Project Type Filters */}
       <div className="flex gap-3 flex-wrap">

@@ -1,11 +1,10 @@
 {
   "id": "gp-appointment-booking-system",
   "title": "GP Appointment Booking System",
-  "shortDescription": "A web application for booking appointments with a GP.",
+  "description": "A web application for booking appointments with a GP. This is a secure system for booking appointments with GP. Patients can arrange, view, edit, cancel, appointments with their local GPs. Appointments are scheduled by the system and the GP, administrators can interact with the system to access and manage the schedule.",
   "type": "web",
   "order": 1,
   "duration": "1 month",
-  "longDescription": "This is a secure system for booking appointments with GP. Patients can arrange, view, edit, cancel, appointments with their local GPs. Appointments are scheduled by the system and the GP, administors can interact with the system to access and manage the schedule.",
   "technologies": [
     "PERN stack",
     "Node.js",

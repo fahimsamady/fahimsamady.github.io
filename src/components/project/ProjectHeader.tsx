@@ -6,16 +6,13 @@ interface ProjectHeaderProps {
 }
 
 export default function ProjectHeader({ project }: ProjectHeaderProps) {
-
   return (
     <section className="mb-8 sm:mb-12">
       <div className="flex items-center gap-2 sm:gap-3 mb-3"></div>
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
         {project.title}
       </h1>
-      <p className="text-base sm:text-lg max-w-2xl">
-        {project.shortDescription}
-      </p>
+      <p className="text-base sm:text-lg max-w-2xl">{project.description}</p>
 
       {/* Project Meta */}
       <div className="grid mt-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6">
@@ -47,10 +44,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
         </h3>
         <div className="flex flex-wrap gap-2">
           {project.technologies.map((tech, index) => (
-            <span
-              key={index}
-              className="px-2 sm:px-3 py-1 bg-gray-100 text-gray-700 text-xs sm:text-sm rounded-xl border border-gray-200"
-            >
+            <span key={index} className="tech-tag">
               {tech}
             </span>
           ))}

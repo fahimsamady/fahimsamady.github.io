@@ -1,11 +1,10 @@
 {
   "id": "project-management-system",
   "title": "Project Management System",
-  "shortDescription": "Web application for teams to manage projects, tasks, and resources.",
+  "description": "Web application for teams to manage projects, tasks, and resources. It is a simple application that allows users to create, edit, and delete projects, tasks, and resources, allocate people to projects and tasks, view the progress and deadlines.",
   "type": "web",
   "order": 4,
   "duration": "3-4 hours",
-  "longDescription": "Project Management System is a web application for teams to manage projects, tasks, and resources. It is a simple application that allows users to create, edit, and delete projects, tasks, and resources, allocate people to projects and tasks, view the progress and deadlines.",
   "technologies": ["Laravel", "Vue", "PHP", "MySQL", "Tailwind CSS"],
   "keyFeatures": [
     "Create, edit, and delete projects, tasks, and resources",

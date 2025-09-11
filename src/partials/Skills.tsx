@@ -17,7 +17,7 @@ export default function Skills() {
 
   return (
     <section className="section-padding space-y-6">
-      <h2 className="text-2xl font-semibold">Skills</h2>
+      <h2 className="section-title">Skills</h2>
 
       {/* Tabs */}
       <div className="flex gap-3">

@@ -14,7 +14,7 @@ export default function ProjectContent({ project }: ProjectContentProps) {
           About the Project
         </h2>
         <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-          {project.longDescription}
+          {project.description}
         </p>
       </section>
 

@@ -1,11 +1,10 @@
 {
   "id": "sensor-constructor",
   "title": "Sensor Constructor",
-  "shortDescription": "Sensor Constructor is a multiplatform QT6 C++ application that allows users to construct sensors and view their data.",
+  "description": "Sensor Constructor is a multiplatform QT6 C++ application that allows users to construct sensors and view their data. It works on MAC, Windows and Linux. It is a multiplatform application that allows users to visually construct sensors and view their data. We can also calculate the sensor length and CTE.",
   "type": "desktop",
   "order": 2,
   "duration": "2 hours",
-  "longDescription": "Sensor Constructor works on MAC, Windows and Linux. It is a multiplatform application that allows users to visually construct sensors and view their data. We can also calculate the sensor length and CTE.",
   "technologies": ["C++", "QT6", "CSS"],
   "keyFeatures": [
     "Visual sensor construction",

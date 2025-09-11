@@ -1,11 +1,10 @@
 {
   "id": "3d-spheres-algorithm",
   "title": "3D Spheres Algorithm",
-  "shortDescription": "I have implemented an algorithm for drawing 3D spheres using geometry, trigonometry and mathematics in Java.",
+  "description": "I have implemented an algorithm for drawing 3D spheres using geometry, trigonometry and mathematics in Java. You can change the radius, color, number of spheres and move them in XYZ plane. Every pixel of sphere is calculated using algorithm. This was my university project.",
   "type": "other",
   "order": 6,
   "duration": "2 hours",
-  "longDescription": "You can change the radius, color, number of spheres and move them in XYZ plane. Every pixel of sphere is calculated using alorithm. This was my university project.",
   "technologies": ["Java"],
   "keyFeatures": [],
   "challenges": [

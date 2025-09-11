@@ -5,7 +5,7 @@ import {
   ProjectGallery,
   ProjectContent,
   ProjectNotFound,
-} from "@/partials/project";
+} from "@/components/project";
 
 interface ProjectPageProps {
   params: Promise<{

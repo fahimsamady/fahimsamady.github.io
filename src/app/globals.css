@@ -49,27 +49,39 @@ html {
 }
 
 .main {
-  @apply min-h-screen px-4 sm:px-8 md:px-16 lg:px-56 xl:px-60;
+  @apply min-h-screen px-4 sm:px-8 md:px-16 lg:px-36 xl:px-46;
 }
 
 .section-padding {
   @apply py-16;
 }
 
+.section-title {
+  @apply text-3xl font-bold text-onSurface mb-8;
+}
+
 .btn {
   @apply px-4 py-2 bg-primary text-white rounded-xl hover:bg-primary/80 transition-colors duration-200;
 }
 
+.card {
+  @apply rounded-xl bg-primary/5 hover:bg-primary/10 overflow-hidden transition-all duration-300;
+}
+
+.tech-tag {
+  @apply px-2 sm:px-3 py-1 bg-primary/15 text-onSurface/70 text-xs rounded-lg;
+}
+
 .skill-tag {
-  @apply px-3 py-2 rounded-xl bg-primary text-white hover:bg-primary/80;
+  @apply px-3 py-2 rounded-xl bg-primary/10 hover:bg-primary/15;
 }
 
 .tab-active {
-  @apply bg-gray-100;
+  @apply bg-primary text-white;
 }
 
 .tab-inactive {
-  @apply hover:bg-gray-100 text-gray-600;
+  @apply hover:bg-primary/10;
 }
 
 .line-clamp-2 {
@@ -92,4 +104,13 @@ html {
 
 .animate-blink {
   animation: blink 1s ease-in-out infinite;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

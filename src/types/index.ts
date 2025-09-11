@@ -50,11 +50,10 @@ export interface Skills {
 export interface Project {
   id: string;
   title: string;
-  shortDescription: string;
+  description: string;
   type: "web" | "mobile" | "desktop" | "other";
   order: number;
   duration: string;
-  longDescription: string;
   technologies: string[];
   keyFeatures: string[];
   challenges: string[];
