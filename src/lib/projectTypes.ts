@@ -1,8 +1,20 @@
-import { Globe, Smartphone, Zap, Cpu } from "lucide-react";
+import {
+  Globe,
+  Smartphone,
+  Zap,
+  Cpu,
+  Component,
+  LoaderPinwheel,
+} from "lucide-react";
 
 export const projectTypes = [
   // SAFELIST THESE COLORS IN TAIWILND CONFIG
-  { key: "all", label: "All", icon: Globe, color: "bg-gray-100 text-gray-800" },
+  {
+    key: "all",
+    label: "All",
+    icon: LoaderPinwheel,
+    color: "bg-gray-100 text-gray-800",
+  },
   { key: "web", label: "Web", icon: Globe, color: "bg-blue-100 text-blue-800" },
   {
     key: "mobile",
@@ -15,6 +27,12 @@ export const projectTypes = [
     label: "Desktop",
     icon: Zap,
     color: "bg-purple-100 text-purple-800",
+  },
+  {
+    key: "ai",
+    label: "AI & ML",
+    icon: Component,
+    color: "bg-red-100 text-red-800",
   },
   {
     key: "other",

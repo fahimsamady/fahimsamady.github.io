@@ -51,7 +51,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  type: "web" | "mobile" | "desktop" | "other";
+  type: "web" | "mobile" | "desktop" | "AI & ML" | "other";
   order: number;
   duration: string;
   technologies: string[];

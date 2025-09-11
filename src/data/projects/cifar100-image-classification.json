@@ -1,0 +1,24 @@
+{
+  "id": "cifar100-image-classification",
+  "title": "CIFAR100 Image Classification",
+  "description": "I used the CIFAR100 dataset for object recognition with two Machine Learning algorithms: Support Vector Machine (SVM) and Convolutional Neural Network (CNN). I trained my models on the CIFAR100 training data and then predicted labels for the test images. Based on those predictions, I evaluated the accuracy of my models and analyzed the confusion matrices, finally comparing the performance of the two models. The SVM achieved 37.62% accuracy for coarse categories, while fine labels were predicted with a slightly lower accuracy of 26.46%. This result was expected because fine labels represent precise object categories, whereas coarse labels represent broader supercategories. In contrast, the CNN performed better, achieving 43.84% accuracy for supercategories and 30.75% for fine labels.",
+  "type": "ai",
+  "order": 7,
+  "duration": "2 hours",
+  "technologies": [
+    "Python",
+    "Jupyter Notebook",
+    "TensorFlow",
+    "Keras",
+    "Scikit-learn"
+  ],
+  "keyFeatures": [],
+  "challenges": [
+    "Used models and methods are not able to predict fine labels accurately."
+  ],
+  "keyLearnings": ["Crtitical thinking", "Machine Learning algorithms"],
+  "gallery": [],
+  "videos": [],
+  "github": "https://github.com/fahimsamady/CIFAR100-Image-Classifier-Notebook",
+  "projectLink": ""
+}

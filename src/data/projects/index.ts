@@ -5,6 +5,7 @@ import projectManagementSystem from "./project-management-system.json";
 import gpAppointmentBookingSystem from "./gp-appointment-booking-system.json";
 import threeDSpheresAlgorithm from "./3d-spheres-algorithm.json";
 import foodgram from "./foodgram.json";
+import cifar100ImageClassification from "./cifar100-image-classification.json";
 
 const projects: Project[] = [
   machineMonitoringSystem,
@@ -13,6 +14,7 @@ const projects: Project[] = [
   gpAppointmentBookingSystem,
   threeDSpheresAlgorithm,
   foodgram,
+  cifar100ImageClassification,
 ].sort((a, b) => a.order - b.order) as Project[];
 
 export default projects;
