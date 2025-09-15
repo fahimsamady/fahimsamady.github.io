@@ -5,7 +5,7 @@
     "institution": "Swansea University",
     "location": "Swansea, UK",
     "period": "2020 - 2024",
-    "gpa": "First Class Honours",
+    "gpa": ["First Class Honours"],
     "description": "",
     "achievements": [
       "Big Data and Machine Learning",
@@ -22,7 +22,11 @@
     "institution": "Trinity High School and Sixth Form Center",
     "location": "Redditch, UK",
     "period": "2018 - 2020",
-    "gpa": "Distinction (IT BTEC), Merit (Computer Science BTEC)",
+    "gpa": [
+      "Distinction (IT BTEC)",
+      "Merit (Computer Science BTEC)",
+      "Business A Level"
+    ],
     "description": "Two-year BTEC studies combining IT and Computer Science.",
     "achievements": [
       "IT BTEC: Distinction - Fundamentals of IT, Virtual and Augmented Reality, Internet of Everything",

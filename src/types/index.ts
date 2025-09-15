@@ -16,7 +16,7 @@ export interface Education {
   institution: string;
   location: string;
   period: string;
-  gpa: string;
+  gpa: string[];
   description: string;
   achievements: string[];
 }

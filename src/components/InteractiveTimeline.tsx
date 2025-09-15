@@ -10,7 +10,7 @@ interface TimelineItem {
   subtitle: string;
   period: string;
   location?: string;
-  gpa?: string;
+  gpa?: string[];
   description?: string;
   achievements?: string[];
 }
@@ -79,11 +79,15 @@ export default function InteractiveTimeline({
           )}
 
           {/* GPA */}
-          {selectedItem.gpa && (
-            <div className="inline-block">
-              <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-semibold">
-                {selectedItem.gpa}
-              </span>
+          {selectedItem.gpa && selectedItem.gpa.length > 0 && (
+            <div className="space-y-2">
+              {selectedItem.gpa.map((gpaItem, idx) => (
+                <div key={idx} className="inline-block">
+                  <span className="bg-primary/10 text-primary px-3 py-1 mr-1 rounded-full text-sm font-semibold">
+                    {gpaItem}
+                  </span>
+                </div>
+              ))}
             </div>
           )}
 
