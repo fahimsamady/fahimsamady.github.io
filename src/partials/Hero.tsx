@@ -29,27 +29,74 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // logic to keep the last word + cursor together ----------
+  const full = displayText || "";
+  // find last whitespace (space). If none, we will treat the whole text as 'post'
+  const lastSpaceIndex = full.lastIndexOf(" ");
+  const splitIndex = lastSpaceIndex > 0 ? lastSpaceIndex : 0;
+
+  const renderColoredSlice = (start: number, end: number) => {
+    // returns array of spans (preserve pre-name/name/post-name color segments)
+    const parts = [];
+
+    let cursor = start;
+    if (cursor < NAME_START_INDEX && start < end) {
+      const segEnd = Math.min(end, NAME_START_INDEX);
+      parts.push(
+        <span key={`s-${start}-${segEnd}`} className="text-onsurface">
+          {full.slice(start, segEnd)}
+        </span>
+      );
+      cursor = segEnd;
+    }
+
+    if (cursor < NAME_END_INDEX && cursor < end) {
+      const segEnd = Math.min(end, NAME_END_INDEX);
+      parts.push(
+        <span key={`n-${cursor}-${segEnd}`} className="text-primary">
+          {full.slice(cursor, segEnd)}
+        </span>
+      );
+      cursor = segEnd;
+    }
+
+    if (cursor < end) {
+      parts.push(
+        <span key={`p-${cursor}-${end}`} className="text-onsurface">
+          {full.slice(cursor, end)}
+        </span>
+      );
+    }
+
+    return parts;
+  };
+  // ----------------------------------------------------------------------
+
   return (
     <section className="section-padding">
       <div className="grid lg:grid-cols-[65%_35%] gap-10 sm:gap-16 md:gap-20 items-center">
         {/* Left Side */}
         <div className="space-y-6">
           <div>
+            {/* ---------- typed heading with robust last-word + cursor handling ---------- */}
             <p className="text-6xl mb-3 font-bold leading-tight">
-              <span className="text-onsurface">
-                {displayText.substring(0, NAME_START_INDEX)}
+              {/* render everything before the final (non-breaking) chunk */}
+              {renderColoredSlice(0, splitIndex)}
+
+              {/* the final chunk (includes leading space before the last word if present)
+                  + cursor live together as one unit — whitespace-nowrap prevents a break inside */}
+              <span className="whitespace-nowrap align-baseline">
+                {renderColoredSlice(splitIndex, full.length)}
+                {showCursor && (
+                  <span
+                    aria-hidden="true"
+                    className="inline-block w-2 h-[1em] bg-primary rounded ml-2 animate-blink align-baseline"
+                  />
+                )}
               </span>
-              <span className="text-primary">
-                {displayText.substring(NAME_START_INDEX, NAME_END_INDEX)}
-              </span>
-              <span className="text-onsurface">
-                {displayText.substring(NAME_END_INDEX)}
-              </span>
-              {showCursor && (
-                <span className="inline-block w-2 h-[3.5rem] bg-primary rounded ml-1 animate-blink align-middle mb-3"></span>
-              )}
             </p>
-            <p className="leading-relaxed">{profile.about}</p>
+
+            <p className="leading-relaxed text-justify">{profile.about}</p>
           </div>
 
           {/* Socials */}
@@ -107,13 +154,13 @@ const Hero = () => {
 
         {/* Right Side - Profile Image */}
         <div className="flex justify-center lg:justify-end">
-          <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden">
+          <div className="relative">
             <Image
               src={profile.profilePicture}
               alt={profile.name}
               width={320}
               height={320}
-              className="w-full h-full object-cover rounded-2xl"
+              className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-2xl shadow-lg transition-transform duration-200 ease-out hover:-translate-y-2"
             />
           </div>
         </div>
