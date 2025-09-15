@@ -160,7 +160,7 @@ const Hero = () => {
               alt={profile.name}
               width={320}
               height={320}
-              className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-2xl shadow-lg transition-transform duration-200 ease-out hover:-translate-y-2"
+              className="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-2xl shadow-lg transition-transform duration-200 ease-out hover:-translate-y-2"
             />
           </div>
         </div>
