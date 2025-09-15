@@ -93,7 +93,7 @@ export default function InteractiveTimeline({
 
           {/* Description */}
           {selectedItem.description && (
-            <p className="text-onSurface/80 leading-relaxed">
+            <p className="text-onSurface/80 text-justify leading-relaxed">
               {selectedItem.description}
             </p>
           )}
